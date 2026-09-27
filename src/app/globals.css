@@ -235,7 +235,7 @@
 
 @media (min-width: 1024px) {
   .hero-sec {
-    --pw: min(740px, max(300px, calc((100vh - 500px) / 1.26)), calc(100vw - 32rem));
+    --pw: min(740px, max(300px, calc((100vh - 420px) / 1.26)), calc(100vw - 32rem));
     height: max(100vh, 840px);
   }
 
@@ -254,27 +254,27 @@
 
   .hc-1 {
     top: 0;
-    right: calc(50% + var(--pw) / 2 + 1.25rem);
+    right: calc(50% + var(--pw) / 2 + 1.5rem);
     left: auto;
     width: 12rem;
   }
 
   .hc-2 {
     top: 0;
-    left: calc(50% + var(--pw) / 2 + 1.25rem);
+    left: calc(50% + var(--pw) / 2 + 1.5rem);
     width: 10rem;
   }
 
   .hc-3 {
     bottom: 0;
-    right: calc(50% + var(--pw) / 2 + 1.25rem);
+    right: calc(50% + var(--pw) / 2 + 1.5rem);
     left: auto;
     width: 14rem;
   }
 
   .hc-4 {
     bottom: 4%;
-    left: calc(50% + var(--pw) / 2 + 1.25rem);
+    left: calc(50% + var(--pw) / 2 + 1.5rem);
     width: 13rem;
   }
 }

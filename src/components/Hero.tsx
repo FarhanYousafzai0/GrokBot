@@ -83,7 +83,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div id="hero-stage" className="relative z-20 w-full mt-6 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0">
+      <div id="hero-stage" className="relative z-20 w-full mt-8 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0">
         <div className="relative h-full w-full flex flex-col items-center lg:justify-end">
           <Image
             id="hero-portrait"
