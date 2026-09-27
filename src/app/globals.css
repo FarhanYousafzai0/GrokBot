@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #f5f4f0;
+    color: #111111;
+    font-family: var(--font-body), sans-serif;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sparkle {
+  clip-path: polygon(
+    50% 0%,
+    60% 40%,
+    100% 50%,
+    60% 60%,
+    50% 100%,
+    40% 60%,
+    0% 50%,
+    40% 40%
+  );
+}
+
+.grid-paper {
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M64 0L0 0 0 64' fill='none' stroke='%23F5F4F0' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+#mobile-menu {
+  transition:
+    opacity 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    visibility 0.35s;
+  visibility: hidden;
+}
+
+#mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#mobile-menu .mm-link {
+  transform: translateY(16px);
+  opacity: 0;
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.5s;
+}
+
+#mobile-menu.open .mm-link {
+  transform: none;
+  opacity: 1;
+}
+
+#mobile-menu.open .mm-link:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+#mobile-menu.open .mm-link:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+#mobile-menu.open .mm-link:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+.arc-wrap {
+  position: relative;
+  overflow: hidden;
+  perspective: var(--persp, 1100px);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  min-height: 280px;
+}
+
+.arc-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(var(--shift, 600px));
+}
+
+.arc-card {
+  position: absolute;
+  width: var(--cw, 220px);
+  height: var(--ch, 320px);
+  left: calc(var(--cw, 220px) / -2);
+  top: calc(var(--ch, 320px) / -2);
+  transform-style: preserve-3d;
+  transform: rotateY(var(--a, 0deg)) translateZ(calc(var(--r, 900px) * -1));
+  cursor: pointer;
+}
+
+.arc-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  transition:
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    outline-color 0.3s;
+  outline: 2px solid rgba(245, 244, 240, 0);
+  outline-offset: 5px;
+}
+
+.arc-card.dark .arc-inner {
+  box-shadow: inset 0 0 0 1px rgba(245, 244, 240, 0.16);
+}
+
+.arc-card.is-active .arc-inner {
+  outline-color: #f5f4f0;
+}
+
+.arc-card .ht {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Ccircle cx='2.5' cy='2.5' r='1.15' fill='%23111111'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Ccircle cx='0' cy='0' r='0.9' fill='%23F5F4F0'/%3E%3Ccircle cx='5' cy='5' r='0.9' fill='%23F5F4F0'/%3E%3Ccircle cx='5' cy='0' r='0.9' fill='%23F5F4F0'/%3E%3Ccircle cx='0' cy='5' r='0.9' fill='%23F5F4F0'/%3E%3C/svg%3E");
+  background-size: 5px 5px, 5px 5px;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.arc-card.is-active .ht,
+.arc-card.tapped .ht {
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .arc-wrap {
+    cursor: none;
+  }
+}
+
+.arc-card.hov .arc-inner {
+  transform: translateY(-16px) translateZ(70px) rotateY(calc(var(--a, 0deg) * -0.7));
+}
+
+.arc-card.hov .ht {
+  opacity: 0;
+}
+
+.arc-cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 40;
+  pointer-events: none;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background: #f5f4f0;
+  color: #111111;
+  font: 500 13px/1 var(--font-body), sans-serif;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+  white-space: nowrap;
+}
+
+.arc-cursor.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.arc-btn {
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.arc-btn:hover {
+  transform: scale(1.06);
+  background: #f5f4f0;
+  color: #111111;
+}
+
+.arc-label-inner {
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.arc-label-inner.swap {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.hero-sec {
+  --pw: min(740px, calc(100vw - 2.5rem));
+}
+
+#hero-portrait {
+  width: var(--pw);
+  max-width: 740px;
+  height: auto;
+}
+
+@media (min-width: 1024px) {
+  .hero-sec {
+    --pw: min(740px, max(300px, calc((100vh - 420px) / 1.26)), calc(100vw - 32rem));
+    height: max(100vh, 840px);
+  }
+
+  #hero-stage {
+    height: auto;
+  }
+
+  #hero-portrait {
+    margin-bottom: -2.75rem;
+  }
+
+  .hc {
+    position: absolute;
+    z-index: 30;
+  }
+
+  .hc-1 {
+    top: 0;
+    right: calc(50% + var(--pw) / 2 + 1.5rem);
+    left: auto;
+    width: 12rem;
+  }
+
+  .hc-2 {
+    top: 0;
+    left: calc(50% + var(--pw) / 2 + 1.5rem);
+    width: 10rem;
+  }
+
+  .hc-3 {
+    bottom: 0;
+    right: calc(50% + var(--pw) / 2 + 1.5rem);
+    left: auto;
+    width: 14rem;
+  }
+
+  .hc-4 {
+    bottom: 4%;
+    left: calc(50% + var(--pw) / 2 + 1.5rem);
+    width: 13rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-drift-1,
+  .animate-drift-2,
+  .animate-drift-3,
+  .animate-drift-4,
+  .lg\:animate-drift-1,
+  .lg\:animate-drift-2,
+  .lg\:animate-drift-3,
+  .lg\:animate-drift-4,
+  .animate-marquee,
+  .animate-ping {
+    animation: none !important;
+  }
+
+  .arc-inner,
+  .arc-label-inner,
+  #mobile-menu,
+  #mobile-menu .mm-link {
+    transition: none !important;
+  }
+
+  .arc-card.hov .arc-inner {
+    transform: none !important;
+  }
+
+  .btn-magnetic,
+  .btn-magnetic:hover,
+  .lift,
+  .lift:hover,
+  .group:hover .lift,
+  .arc-btn:hover {
+    transform: none !important;
+  }
+}
