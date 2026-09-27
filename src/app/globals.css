@@ -94,6 +94,10 @@
   transition-delay: 0.12s;
 }
 
+#mobile-menu.open .mm-link:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
 .arc-wrap {
   position: relative;
   overflow: hidden;
@@ -219,14 +223,28 @@
   transform: translateY(6px);
 }
 
+.hero-sec {
+  --pw: min(740px, calc(100vw - 2.5rem));
+}
+
+#hero-portrait {
+  width: var(--pw);
+  max-width: 740px;
+  height: auto;
+}
+
 @media (min-width: 1024px) {
   .hero-sec {
-    --ph: clamp(380px, calc(100vh - 430px), 500px);
-    height: calc(var(--ph) + 430px);
+    --pw: min(740px, max(300px, calc((100vh - 500px) / 1.26)), calc(100vw - 32rem));
+    height: max(100vh, 840px);
   }
 
   #hero-stage {
-    height: var(--ph);
+    height: auto;
+  }
+
+  #hero-portrait {
+    margin-bottom: -2.75rem;
   }
 
   .hc {
@@ -235,26 +253,28 @@
   }
 
   .hc-1 {
-    top: 14%;
-    left: calc(50% - var(--ph) * 0.17 - 12rem);
+    top: 0;
+    right: calc(50% + var(--pw) / 2 + 1.25rem);
+    left: auto;
     width: 12rem;
   }
 
   .hc-2 {
-    top: 7%;
-    left: calc(50% + var(--ph) * 0.17);
+    top: 0;
+    left: calc(50% + var(--pw) / 2 + 1.25rem);
     width: 10rem;
   }
 
   .hc-3 {
-    bottom: 8%;
-    left: calc(50% - var(--ph) * 0.27 - 14rem);
+    bottom: 0;
+    right: calc(50% + var(--pw) / 2 + 1.25rem);
+    left: auto;
     width: 14rem;
   }
 
   .hc-4 {
-    bottom: 18%;
-    left: calc(50% + var(--ph) * 0.25);
+    bottom: 4%;
+    left: calc(50% + var(--pw) / 2 + 1.25rem);
     width: 13rem;
   }
 }

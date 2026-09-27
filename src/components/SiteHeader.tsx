@@ -9,7 +9,8 @@ import { Magnetic } from "./Magnetic";
 const links = [
   { href: "/work", label: "Work", id: "nav-work", menuId: "menu-work", index: "01" },
   { href: "/about", label: "About", id: "nav-about", menuId: "menu-about", index: "02" },
-  { href: "/contact", label: "Contact", id: "nav-contact", menuId: "menu-contact", index: "03" },
+  { href: "/blog", label: "Blog", id: "nav-blog", menuId: "menu-blog", index: "03" },
+  { href: "/contact", label: "Contact", id: "nav-contact", menuId: "menu-contact", index: "04" },
 ];
 
 function isCurrent(href: string, pathname: string) {
@@ -50,15 +51,15 @@ export function SiteHeader() {
 
   return (
     <>
-      <nav className="fixed top-3 md:top-5 left-1/2 -translate-x-1/2 z-50 bg-paper border border-ink/10 rounded-full shadow-soft px-2 py-2 flex items-center gap-6 md:gap-12 w-[calc(100%-24px)] md:w-[90%] max-w-4xl">
+      <nav className="fixed top-3 md:top-5 left-1/2 -translate-x-1/2 z-50 bg-paper border border-ink/10 rounded-full shadow-soft px-2 py-2 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center w-[calc(100%-24px)] md:w-[min(92%,72rem)] max-w-6xl">
         <Link
           href="/"
-          className="pl-3 md:pl-4 font-display font-medium text-base md:text-lg tracking-tight whitespace-nowrap"
+          className="justify-self-start pl-3 md:pl-4 font-display font-medium text-base md:text-lg tracking-tight whitespace-nowrap"
           id="nav-home"
         >
           Farhan Yousafzai
         </Link>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/80">
+        <div className="hidden md:flex md:col-start-2 items-center justify-center gap-5 lg:gap-8 text-sm font-medium text-ink/80">
           {links.map((link) => {
             const current = isCurrent(link.href, pathname);
             return (
@@ -79,7 +80,7 @@ export function SiteHeader() {
             );
           })}
         </div>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="justify-self-end md:col-start-3 flex items-center gap-2">
           <Magnetic
             href="/contact"
             id="nav-cta"

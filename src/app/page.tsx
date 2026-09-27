@@ -2,6 +2,7 @@ import { AboutTeaser, HomeCTA, Process } from "@/components/Bands";
 import { ArcCarousel } from "@/components/ArcCarousel";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
+import { Writing } from "@/components/Writing";
 import { projects } from "@/data/projects";
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
         caseLinkId="work-case-link"
         showFeatures
       />
+      <Writing />
       <Process />
       <AboutTeaser />
       <HomeCTA />

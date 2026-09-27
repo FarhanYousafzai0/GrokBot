@@ -83,18 +83,20 @@ export function Hero() {
         </div>
       </div>
 
-      <div id="hero-stage" className="relative z-20 w-full mt-10 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0">
+      <div id="hero-stage" className="relative z-20 w-full mt-6 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0">
         <div className="relative h-full w-full flex flex-col items-center lg:justify-end">
           <Image
             id="hero-portrait"
             src="/images/farhan-cutout-bw.png"
             alt="Farhan Yousafzai"
-            width={1200}
-            height={1510}
+            width={741}
+            height={933}
             priority
+            quality={90}
+            sizes="(min-width: 1024px) 740px, 92vw"
             draggable={false}
-            className="relative z-20 h-[clamp(300px,64vw,460px)] lg:h-full w-auto max-w-none object-contain object-bottom select-none reveal"
-            style={{ width: "auto", transitionDelay: "300ms" }}
+            className="relative z-20 block mx-auto max-w-[740px] object-contain object-bottom select-none reveal"
+            style={{ width: "var(--pw)", height: "auto", maxWidth: "740px", transitionDelay: "300ms" }}
           />
 
           <div className="hero-cards relative z-30 w-full grid grid-cols-2 md:grid-cols-4 gap-3 px-4 sm:px-6 pt-4 pb-8 border-t border-ink/10 bg-paper lg:contents">

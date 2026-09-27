@@ -32,7 +32,7 @@ export function Process() {
   return (
     <section className="py-24 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
       <div className="mb-16 reveal">
-        <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">02 / How I work</span>
+        <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">03 / How I work</span>
         <h2 className="font-display text-[clamp(2.25rem,4.4vw,3rem)] font-medium tracking-tight">My process</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -61,7 +61,7 @@ export function AboutTeaser() {
   return (
     <section className="py-24 md:py-32 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
       <div className="mb-16 reveal">
-        <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">03 / About</span>
+        <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">04 / About</span>
       </div>
       <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center reveal">
         <div className="w-full md:w-5/12">
@@ -70,8 +70,9 @@ export function AboutTeaser() {
             <Image
               src="/images/farhan-cutout-bw.png"
               alt="Farhan Yousafzai"
-              width={1200}
-              height={1510}
+              width={741}
+              height={933}
+              sizes="(min-width: 768px) 400px, 92vw"
               className="absolute left-0 right-0 bottom-0 w-full h-[94%] object-cover object-top select-none"
               style={{ width: "100%", height: "94%", objectFit: "cover", objectPosition: "top" }}
             />

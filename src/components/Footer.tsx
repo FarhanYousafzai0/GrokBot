@@ -12,6 +12,9 @@ export function Footer() {
           <Link href="/about" className="hover:text-ink transition-colors" id="footer-about">
             About
           </Link>
+          <Link href="/blog" className="hover:text-ink transition-colors" id="footer-blog">
+            Blog
+          </Link>
           <Link href="/contact" className="hover:text-ink transition-colors" id="footer-contact">
             Contact
           </Link>

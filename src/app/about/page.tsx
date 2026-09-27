@@ -62,9 +62,10 @@ export default function AboutPage() {
               <Image
                 src="/images/farhan-cutout-bw.png"
                 alt="Farhan Yousafzai"
-                width={1200}
-                height={1510}
+                width={741}
+                height={933}
                 priority
+                sizes="(min-width: 768px) 560px, 92vw"
                 className="absolute left-0 right-0 bottom-0 w-full h-[94%] object-cover object-top select-none"
                 style={{ width: "100%", height: "94%", objectFit: "cover", objectPosition: "top" }}
               />
