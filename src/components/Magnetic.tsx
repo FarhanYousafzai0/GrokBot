@@ -54,7 +54,7 @@ export function Magnetic({
   const classes = `btn-magnetic ${className}`;
 
   if (href) {
-    if (href.startsWith("#") || href.startsWith("http")) {
+    if (href.startsWith("#") || href.startsWith("http") || href.includes("#")) {
       return (
         <a ref={ref as Ref<HTMLAnchorElement>} href={href} id={id} className={classes} target={target} rel={rel}>
           {children}

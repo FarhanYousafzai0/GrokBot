@@ -5,6 +5,7 @@
 @layer base {
   html {
     max-width: 100%;
+    scroll-padding-top: 7rem;
     scrollbar-width: none;
   }
 

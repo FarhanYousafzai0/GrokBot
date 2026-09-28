@@ -14,11 +14,12 @@ function RolePill() {
 
 function GlobeMark() {
   return (
-    <img
+    <Image
       src="/icons/globe.png"
       alt=""
       width={64}
       height={64}
+      aria-hidden
       className="h-16 w-16 shrink-0 animate-globe-spin"
     />
   );

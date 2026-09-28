@@ -26,8 +26,8 @@ npm start
 1. Push this repository to GitHub.
 2. In Vercel, import the repository. Framework preset: Next.js. Root directory: the repo root.
 3. Leave the build command as `npm run build` and the output as the Next.js default. No environment variables are required.
-4. Deploy. Vercel serves `/`, `/work`, `/work/[slug]`, `/about`, `/contact`, `/blog`, and `/blog/[slug]`.
+4. Deploy. Vercel serves `/` (single-page sections for work, about, blog, and contact) and `/work/[slug]` for project case studies.
 
 ## Portrait
 
-The black and white cutout lives at `public/images/farhan-cutout-bw.png` (741x933, transparent PNG). The hero, the landing about section, and the about page load it with `next/image`. A colour copy of the same photo is at `public/images/farhan-cutout-color.png` and is not used by any page. Replace the black and white file to update the portrait. Do not substitute a different person.
+The black and white cutout lives at `public/images/farhan-cutout-bw.png` (741x933, transparent PNG). The hero and landing about section use `next/image` with `public/images/farhan-seated.png` where shown. A colour copy of the same photo is at `public/images/farhan-cutout-color.png` and is not used by any page. Replace the black and white file to update the portrait. Do not substitute a different person.

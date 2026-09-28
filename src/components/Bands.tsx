@@ -1,7 +1,6 @@
-import { ArrowRight, Map, Server, Smartphone, Wrench } from "lucide-react";
-import { contact } from "@/data/contact";
+import { Map, Plus, Server, Smartphone, Wrench } from "lucide-react";
 import Image from "next/image";
-import { Magnetic } from "./Magnetic";
+import { ContactForm } from "./ContactForm";
 
 const steps = [
   {
@@ -57,9 +56,15 @@ export function Process() {
   );
 }
 
+const contactFaqs = [
+  "[Question 1, placeholder]",
+  "[Question 2, placeholder]",
+  "[Question 3, placeholder]",
+];
+
 export function AboutTeaser() {
   return (
-    <section className="py-24 md:py-32 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
+    <section id="about" className="py-24 md:py-32 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10 scroll-mt-28">
       <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center reveal">
         <div className="w-full md:w-5/12">
           <div className="relative aspect-square w-full max-w-[400px] mx-auto bg-ink/[0.04] border border-ink/10 shadow-soft rounded-[24px] overflow-hidden flex items-end justify-center transition-transform duration-500 hover:-translate-y-1.5 lift">
@@ -82,74 +87,56 @@ export function AboutTeaser() {
           <h2 className="font-display text-[clamp(1.75rem,3.2vw,2.25rem)] font-medium tracking-tight mb-6 leading-tight">
             I&apos;m Farhan Yousafzai, a MERN stack and React Native developer based in Pakistan.
           </h2>
-          <p className="text-lg text-ink/70 mb-8 max-w-xl leading-relaxed">
+          <p className="text-lg text-ink/70 max-w-xl leading-relaxed">
             [Your story here: how you got into MERN and React Native, placeholder.]
           </p>
-          <Magnetic
-            href="/about"
-            id="about-more-btn"
-            className="inline-flex items-center justify-center bg-paper border border-ink/20 text-ink rounded-full px-6 py-3 text-sm font-medium hover:bg-ink/5 transition-colors"
-          >
-            More about me
-          </Magnetic>
         </div>
       </div>
     </section>
   );
 }
 
-export function HomeCTA() {
+export function ContactSection() {
   return (
-    <section className="py-24 px-5 sm:px-6 container mx-auto max-w-5xl reveal">
-      <div className="bg-ink text-paper rounded-[32px] px-6 py-12 sm:p-10 md:p-16 lg:p-20 text-center flex flex-col items-center relative overflow-hidden">
-        <div className="absolute inset-0 grid-paper pointer-events-none" />
-        <h2 className="font-display text-[clamp(2.1rem,5.5vw,3.75rem)] leading-[1.02] font-medium tracking-tight mb-8 max-w-3xl relative z-10">
-          Have an idea for web or mobile? Let&apos;s build it.
-        </h2>
-        <p className="text-[clamp(1rem,2.2vw,1.5rem)] text-paper/70 font-mono mb-12 relative z-10 break-words">
-          {contact.email}
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
-          <Magnetic
-            href="/contact"
-            id="cta-contact-btn"
-            className="inline-flex items-center justify-center bg-paper text-ink border border-ink/15 rounded-full px-8 py-4 text-base font-medium hover:scale-105 transition-transform duration-300 lift"
+    <section id="contact" className="border-t border-ink/10 scroll-mt-28">
+      <header className="relative pt-24 md:pt-28 pb-12 md:pb-16 px-5 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
+        <div className="absolute top-[30%] left-[10%] w-4 h-4 bg-ink/20 sparkle" />
+        <div className="absolute top-[45%] right-[12%] w-5 h-5 bg-ink/20 sparkle" />
+        <div className="relative container mx-auto max-w-6xl text-center">
+          <h2
+            className="reveal font-display font-medium text-[clamp(2.6rem,8.4vw,6.5rem)] leading-[0.95] tracking-[-0.04em]"
+            style={{ transitionDelay: "80ms" }}
           >
-            Get in touch
-          </Magnetic>
-          <a
-            href={contact.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-transparent border border-paper/20 text-paper rounded-full px-8 py-4 text-base font-medium hover:bg-paper/10 transition-colors"
-            id="cta-github-btn"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function NextStep({ id }: { id: string }) {
-  return (
-    <section className="py-24 px-5 sm:px-6 container mx-auto max-w-5xl reveal">
-      <div className="bg-ink text-paper rounded-[32px] px-6 py-10 sm:p-10 md:p-16 flex flex-col md:flex-row md:items-center justify-between gap-8">
-        <div>
-          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight leading-[1.02]">
-            Have a project in mind?
+            Let&apos;s build
             <br />
-            Let&apos;s talk.
+            something together.
           </h2>
+          <p className="reveal mt-6 text-lg md:text-xl text-ink/70" style={{ transitionDelay: "160ms" }}>
+            Tell me about your web or mobile idea. I&apos;ll get back to you soon.
+          </p>
         </div>
-        <Magnetic
-          href="/contact"
-          id={id}
-          className="inline-flex items-center gap-2 bg-paper text-ink border border-ink/15 rounded-full px-7 py-4 font-medium transition-transform duration-300 shrink-0"
-        >
-          Get in touch <ArrowRight size={16} />
-        </Magnetic>
+      </header>
+      <ContactForm />
+      <div className="px-5 sm:px-6 pb-20 container mx-auto max-w-4xl">
+        <div className="reveal">
+          <h3 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-6">Questions.</h3>
+        </div>
+        {contactFaqs.map((question, index) => (
+          <details
+            key={index}
+            className="group border-b border-ink/10 py-6 reveal"
+            style={{ transitionDelay: `${index * 80}ms` }}
+          >
+            <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-display text-[clamp(1.2rem,2.4vw,1.5rem)] font-medium">
+              {question}
+              <span className="w-10 h-10 shrink-0 rounded-full border border-ink/15 flex items-center justify-center transition-transform group-open:rotate-45">
+                <Plus size={16} />
+              </span>
+            </summary>
+            <p className="mt-4 text-ink/70 max-w-2xl">[Answer, placeholder]</p>
+          </details>
+        ))}
       </div>
     </section>
   );

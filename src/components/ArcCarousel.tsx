@@ -399,7 +399,7 @@ export function ArcCarousel({
   });
 
   return (
-    <section id={sectionId} className="relative bg-ink text-paper overflow-hidden py-[clamp(4.5rem,9vw,8rem)]">
+    <section id={sectionId} className="relative bg-ink text-paper overflow-hidden py-[clamp(4.5rem,9vw,8rem)] scroll-mt-28">
       <div className="absolute inset-0 grid-paper pointer-events-none" />
       <div className="relative container mx-auto px-5 sm:px-6 max-w-3xl text-center reveal">
         <h2 className="font-display font-medium text-[clamp(2.25rem,5.2vw,4.5rem)] leading-[0.98] tracking-[-0.035em]">

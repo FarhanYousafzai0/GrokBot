@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import { HashLink } from "./HashLink";
 import { projectNeighbors } from "@/data/projects";
 import { ProductBrowser, ProductPhone, StageBrowser } from "./mocks";
 
@@ -48,13 +49,13 @@ export function CaseStudy({ project }: { project: Project }) {
       <header className="relative pt-32 md:pt-36 pb-10 px-5 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
         <div className="relative container mx-auto max-w-6xl">
-          <Link
-            href="/work"
+          <HashLink
+            href="/#work"
             className="reveal inline-flex items-center gap-2 text-sm font-medium border border-ink/15 rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition-colors"
             id="case-back-link"
           >
-            <ArrowLeft size={16} /> All work
-          </Link>
+            <ArrowLeft size={16} /> Back to work
+          </HashLink>
           <div className="mt-10 grid md:grid-cols-12 gap-8 items-end">
             <div className="md:col-span-8 reveal" style={{ transitionDelay: "80ms" }}>
               <h1 className="font-display font-medium text-[clamp(2.6rem,7.5vw,5.75rem)] leading-[0.95] tracking-[-0.04em]">

@@ -55,15 +55,3 @@ export const posts: Post[] = [
     date: "[Date, placeholder]",
   },
 ];
-
-export function getPost(slug: string) {
-  return posts.find((post) => post.slug === slug);
-}
-
-export function postNeighbors(slug: string) {
-  const index = posts.findIndex((post) => post.slug === slug);
-  if (index < 0) return { prev: undefined, next: undefined };
-  const prev = posts[(index - 1 + posts.length) % posts.length];
-  const next = posts[(index + 1) % posts.length];
-  return { prev, next };
-}

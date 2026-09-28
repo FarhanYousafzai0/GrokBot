@@ -4,6 +4,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { HashLink } from "./HashLink";
 import { Magnetic } from "./Magnetic";
 
 const links = [
@@ -57,19 +58,19 @@ export function SiteHeader() {
         </Link>
         <div className="hidden md:flex md:col-start-2 items-center justify-center gap-5 lg:gap-8 text-sm font-medium text-ink/80">
           {links.map((link) => (
-              <Link
+              <HashLink
                 key={link.href}
                 href={link.href}
                 id={link.id}
                 className="hover:text-ink transition-colors"
               >
                 {link.label}
-              </Link>
+              </HashLink>
             ))}
         </div>
         <div className="justify-self-end md:col-start-3 flex items-center gap-2">
           <Magnetic
-            href="/contact"
+            href="/#contact"
             id="nav-cta"
             className="hidden sm:inline-flex items-center justify-center bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-5 py-2.5 text-sm font-medium transition-transform duration-300"
           >
@@ -109,7 +110,7 @@ export function SiteHeader() {
         </div>
         <div className="relative flex-1 flex flex-col justify-center">
           {links.map((link) => (
-            <Link
+            <HashLink
               key={link.menuId}
               href={link.href}
               id={link.menuId}
@@ -120,18 +121,18 @@ export function SiteHeader() {
                 {link.label}
               </span>
               <span className="font-mono text-xs text-paper/50">{link.index}</span>
-            </Link>
+            </HashLink>
           ))}
         </div>
         <div className="relative flex flex-wrap items-center justify-between gap-4">
-          <Link
-            href="/contact"
+          <HashLink
+            href="/#contact"
             className="inline-flex items-center gap-2 bg-paper text-ink border border-ink/15 rounded-full px-6 py-3.5 font-medium"
             id="menu-cta"
             onClick={close}
           >
             Let&apos;s talk <ArrowRight size={16} />
-          </Link>
+          </HashLink>
           <span className="font-mono text-[11px] uppercase tracking-wider text-paper/50">
             Based in Pakistan
           </span>
