@@ -1,6 +1,9 @@
-import { Map, Plus, Server, Smartphone, Wrench } from "lucide-react";
+import { Map, Server, Smartphone, Wrench } from "lucide-react";
+import { contact } from "@/data/contact";
+import { faqs } from "@/data/faqs";
 import Image from "next/image";
 import { ContactForm } from "./ContactForm";
+import { FaqList } from "./FaqList";
 
 const steps = [
   {
@@ -31,7 +34,7 @@ const steps = [
 export function Process() {
   return (
     <section className="py-24 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
-      <div className="mb-16 reveal">
+      <div className="mb-16 reveal text-center">
         <h2 className="font-display text-[clamp(2.25rem,4.4vw,3rem)] font-medium tracking-tight">My process</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -56,12 +59,6 @@ export function Process() {
   );
 }
 
-const contactFaqs = [
-  "[Question 1, placeholder]",
-  "[Question 2, placeholder]",
-  "[Question 3, placeholder]",
-];
-
 export function AboutTeaser() {
   return (
     <section id="about" className="py-24 md:py-32 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10 scroll-mt-28">
@@ -71,7 +68,7 @@ export function AboutTeaser() {
             <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
             <Image
               src="/images/farhan-seated.png"
-              alt="Farhan Yousafzai"
+              alt={contact.name}
               width={691}
               height={954}
               sizes="(min-width: 768px) 400px, 92vw"
@@ -79,15 +76,15 @@ export function AboutTeaser() {
               style={{ width: "100%", height: "94%", objectFit: "cover", objectPosition: "top" }}
             />
             <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.08em] bg-paper border border-ink/10 rounded-full px-3 py-1 text-ink/70">
-              Farhan Yousafzai
+              {contact.name}
             </span>
           </div>
         </div>
-        <div className="w-full md:w-7/12 flex flex-col items-start">
+        <div className="w-full md:w-7/12 flex flex-col items-center text-center md:items-start md:text-left">
           <h2 className="font-display text-[clamp(1.75rem,3.2vw,2.25rem)] font-medium tracking-tight mb-6 leading-tight">
-            I&apos;m Farhan Yousafzai, a MERN stack and React Native developer based in Pakistan.
+            I&apos;m {contact.name}, a MERN stack and React Native developer based in Pakistan.
           </h2>
-          <p className="text-lg text-ink/70 max-w-xl leading-relaxed">
+          <p className="text-lg text-ink/70 max-w-xl leading-relaxed mx-auto md:mx-0">
             [Your story here: how you got into MERN and React Native, placeholder.]
           </p>
         </div>
@@ -118,25 +115,30 @@ export function ContactSection() {
         </div>
       </header>
       <ContactForm />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          }),
+        }}
+      />
       <div className="px-5 sm:px-6 pb-20 container mx-auto max-w-4xl">
-        <div className="reveal">
-          <h3 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-6">Questions.</h3>
+        <div className="reveal text-center">
+          <h3 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-3">
+            Questions clients ask first.
+          </h3>
+          <p className="text-ink/60 mb-8 max-w-2xl mx-auto">
+            Straight answers before we get on a call — so you know how I work, what I build, and what happens after launch.
+          </p>
         </div>
-        {contactFaqs.map((question, index) => (
-          <details
-            key={index}
-            className="group border-b border-ink/10 py-6 reveal"
-            style={{ transitionDelay: `${index * 80}ms` }}
-          >
-            <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-display text-[clamp(1.2rem,2.4vw,1.5rem)] font-medium">
-              {question}
-              <span className="w-10 h-10 shrink-0 rounded-full border border-ink/15 flex items-center justify-center transition-transform group-open:rotate-45">
-                <Plus size={16} />
-              </span>
-            </summary>
-            <p className="mt-4 text-ink/70 max-w-2xl">[Answer, placeholder]</p>
-          </details>
-        ))}
+        <FaqList />
       </div>
     </section>
   );

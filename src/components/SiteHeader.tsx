@@ -4,6 +4,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { contact } from "@/data/contact";
 import { HashLink } from "./HashLink";
 import { Magnetic } from "./Magnetic";
 
@@ -54,7 +55,7 @@ export function SiteHeader() {
           className="justify-self-start pl-3 md:pl-4 font-display font-medium text-base md:text-lg tracking-tight whitespace-nowrap"
           id="nav-home"
         >
-          Farhan Yousafzai
+          {contact.name}
         </Link>
         <div className="hidden md:flex md:col-start-2 items-center justify-center gap-5 lg:gap-8 text-sm font-medium text-ink/80">
           {links.map((link) => (
@@ -97,7 +98,7 @@ export function SiteHeader() {
       >
         <div className="absolute inset-0 grid-paper pointer-events-none" />
         <div className="relative flex items-center justify-between border border-paper/15 rounded-full pl-4 pr-2 py-2">
-          <span className="font-display font-medium text-base tracking-tight">Farhan Yousafzai</span>
+          <span className="font-display font-medium text-base tracking-tight">{contact.name}</span>
           <button
             type="button"
             id="menu-close"

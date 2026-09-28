@@ -4,9 +4,9 @@ import { posts } from "@/data/posts";
 export function Writing() {
   return (
     <section id="writing" className="py-24 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10 scroll-mt-28">
-      <div className="mb-12 reveal">
+      <div className="mb-12 reveal text-center">
         <h2 className="font-display text-[clamp(2.25rem,4.4vw,3rem)] font-medium tracking-tight">Writing.</h2>
-        <p className="mt-4 text-ink/70 max-w-xl">Notes on building for web and mobile. Every post here is a placeholder.</p>
+        <p className="mt-4 text-ink/70 max-w-xl mx-auto">Notes on building for web and mobile. Every post here is a placeholder.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {posts.map((post, index) => (

@@ -119,7 +119,7 @@ export function CaseStudy({ project }: { project: Project }) {
       </section>
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl grid md:grid-cols-12 gap-10 border-b border-ink/10">
-        <div className="md:col-span-4 reveal">
+        <div className="md:col-span-4 reveal text-center md:text-left">
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight leading-[1.02]">
             What needed solving.
           </h2>
@@ -133,7 +133,7 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl">
         <div className="reveal">
-          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">How I approached it.</h2>
+          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12 text-center">How I approached it.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {project.approach.map((step, index) => (
@@ -152,7 +152,7 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl">
         <div className="reveal">
-          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">How it fits together.</h2>
+          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12 text-center">How it fits together.</h2>
         </div>
         <div className="reveal bg-paper border border-ink/10 rounded-[32px] p-6 sm:p-8 md:p-14 shadow-soft">
           <div className="hidden md:flex flex-col items-center gap-0">
@@ -196,7 +196,7 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl border-t border-ink/10">
         <div className="reveal">
-          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">What came out of it.</h2>
+          <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12 text-center">What came out of it.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {project.outcomes.map((outcome, index) => {

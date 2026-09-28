@@ -1,6 +1,6 @@
-# Farhan Yousafzai
+# Muhammad Farhan
 
-Portfolio for Farhan Yousafzai, a MERN stack and React Native developer based in Pakistan. Built with Next.js (App Router), TypeScript, and Tailwind CSS.
+Portfolio for Muhammad Farhan, a MERN stack and React Native developer based in Pakistan. Built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
 Placeholder posts stay marked in `src/data/posts.ts`. Project write-ups live in `src/data/projects.ts`. Drop screenshots into `public/images/projects/<slug>/` as `cover.png` and `01.png`–`04.png`.
 

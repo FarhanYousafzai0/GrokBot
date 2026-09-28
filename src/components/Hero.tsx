@@ -100,7 +100,7 @@ export function Hero() {
           <Image
             id="hero-portrait"
             src="/images/farhan-seated.png"
-            alt="Farhan Yousafzai"
+            alt={contact.name}
             width={691}
             height={954}
             priority
