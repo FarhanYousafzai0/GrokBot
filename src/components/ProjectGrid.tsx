@@ -100,7 +100,6 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
     <section id="all-projects" className="px-5 sm:px-6 pt-20 md:pt-28 pb-12 container mx-auto max-w-6xl scroll-mt-28">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">All projects</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight">Everything, filtered.</h2>
         </div>
         <div className="flex items-center gap-2 bg-paper border border-ink/10 rounded-full p-1.5 shadow-soft self-start md:self-end max-w-full" role="tablist">
@@ -111,7 +110,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                 key={item.id}
                 type="button"
                 role="tab"
-                className={`filter-pill rounded-full px-4 sm:px-5 py-2.5 text-sm font-medium transition-colors ${selected ? "bg-ink text-paper" : "text-ink hover:bg-ink/5"}`}
+                className={`filter-pill rounded-full px-4 sm:px-5 py-2.5 text-sm font-medium border transition-colors ${selected ? "bg-ink text-paper border-transparent outline outline-1 outline-offset-[3px] outline-ink/30" : "text-ink border-ink/15 hover:bg-ink/5"}`}
                 aria-selected={selected}
                 onClick={() => setFilter(item.id)}
               >

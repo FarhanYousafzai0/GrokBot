@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contact } from "@/data/contact";
 
 export function Footer() {
   return (
@@ -19,11 +20,11 @@ export function Footer() {
             Contact
           </Link>
           <span className="w-1 h-1 rounded-full bg-ink/20 hidden md:block" />
-          <a href="#" className="hover:text-ink transition-colors" id="footer-github">
-            GitHub (placeholder)
+          <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors" id="footer-github">
+            GitHub
           </a>
-          <a href="#" className="hover:text-ink transition-colors" id="footer-linkedin">
-            LinkedIn (placeholder)
+          <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors" id="footer-linkedin">
+            LinkedIn
           </a>
         </div>
         <div className="text-xs text-ink/50">© 2026 Farhan Yousafzai. Based in Pakistan.</div>

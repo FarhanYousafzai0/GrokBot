@@ -37,7 +37,6 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
           </Link>
           <div className="mt-10 reveal" style={{ transitionDelay: "80ms" }}>
             <div className="flex flex-wrap items-center gap-3 mb-5">
-              <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60">Post {post.num}</span>
               <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-ink text-paper">{post.tag}</span>
             </div>
             <h1 className="font-display font-medium text-[clamp(2.4rem,6vw,4.5rem)] leading-[0.98] tracking-[-0.04em]">

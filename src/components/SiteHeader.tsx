@@ -84,7 +84,7 @@ export function SiteHeader() {
           <Magnetic
             href="/contact"
             id="nav-cta"
-            className="hidden sm:inline-flex items-center justify-center bg-ink text-paper rounded-full px-5 py-2.5 text-sm font-medium transition-transform duration-300"
+            className="hidden sm:inline-flex items-center justify-center bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-5 py-2.5 text-sm font-medium transition-transform duration-300"
           >
             Let&apos;s talk
           </Magnetic>
@@ -139,7 +139,7 @@ export function SiteHeader() {
         <div className="relative flex flex-wrap items-center justify-between gap-4">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-paper text-ink rounded-full px-6 py-3.5 font-medium"
+            className="inline-flex items-center gap-2 bg-paper text-ink border border-ink/15 rounded-full px-6 py-3.5 font-medium"
             id="menu-cta"
             onClick={close}
           >

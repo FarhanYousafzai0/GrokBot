@@ -30,7 +30,6 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
         <div className="relative container mx-auto max-w-6xl grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-6 reveal">
-            <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">About</span>
             <h1 className="font-display font-medium text-[clamp(2.75rem,8vw,6rem)] leading-[0.95] tracking-[-0.04em]">
               Hi, I&apos;m
               <br />
@@ -43,7 +42,7 @@ export default function AboutPage() {
               <Magnetic
                 href="/contact"
                 id="about-contact-btn"
-                className="inline-flex items-center gap-2 bg-ink text-paper rounded-full px-7 py-4 font-medium shadow-soft transition-transform duration-300"
+                className="inline-flex items-center gap-2 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-7 py-4 font-medium shadow-soft transition-transform duration-300"
               >
                 Get in touch <ArrowRight size={16} />
               </Magnetic>
@@ -60,10 +59,10 @@ export default function AboutPage() {
             <div className="group relative h-[clamp(380px,56vw,520px)] rounded-[32px] border border-ink/10 bg-ink/[0.04] shadow-soft overflow-hidden transition-transform duration-500 hover:-translate-y-1.5 lift">
               <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
               <Image
-                src="/images/farhan-cutout-bw.png"
+                src="/images/farhan-seated.png"
                 alt="Farhan Yousafzai"
-                width={741}
-                height={933}
+                width={691}
+                height={954}
                 priority
                 sizes="(min-width: 768px) 560px, 92vw"
                 className="absolute left-0 right-0 bottom-0 w-full h-[94%] object-cover object-top select-none"
@@ -81,11 +80,8 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl grid md:grid-cols-12 gap-10 border-t border-ink/10">
-        <div className="md:col-span-4 reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">01 / Story</span>
-        </div>
-        <div className="md:col-span-8 reveal" style={{ transitionDelay: "80ms" }}>
+      <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl border-t border-ink/10">
+        <div className="reveal max-w-3xl">
           <p className="font-display text-[clamp(1.6rem,3.4vw,2.25rem)] font-medium leading-[1.15] tracking-tight">
             [Your story here: how you got into MERN and React Native, placeholder]
           </p>
@@ -98,7 +94,6 @@ export default function AboutPage() {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl">
         <div className="reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">02 / Stack</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">What I build with.</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
@@ -123,7 +118,6 @@ export default function AboutPage() {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl grid md:grid-cols-12 gap-10 border-t border-ink/10">
         <div className="md:col-span-5 reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">03 / Timeline</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight">Along the way.</h2>
           <p className="mt-4 text-ink/60">All entries are placeholders.</p>
         </div>
@@ -148,8 +142,7 @@ export default function AboutPage() {
       <section className="px-5 sm:px-6 py-12 container mx-auto max-w-6xl">
         <div className="reveal bg-ink text-paper rounded-[32px] p-10 md:p-14 grid md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-3">
-            <span className="font-mono text-xs uppercase tracking-[0.08em] text-paper/60">04 / Now</span>
-            <div className="mt-3 inline-flex items-center gap-2 border border-paper/15 rounded-full px-3 py-1 text-sm">
+            <div className="inline-flex items-center gap-2 border border-paper/15 rounded-full px-3 py-1 text-sm">
               <span className="w-2 h-2 rounded-full bg-paper" /> Now
             </div>
           </div>

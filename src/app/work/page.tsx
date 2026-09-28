@@ -13,9 +13,6 @@ export default function WorkPage() {
         <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
         <div className="relative container mx-auto max-w-6xl">
           <div className="reveal">
-            <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">Work</span>
-          </div>
-          <div className="reveal" style={{ transitionDelay: "80ms" }}>
             <h1 className="font-display font-medium text-[clamp(2.75rem,8vw,6rem)] leading-[0.95] tracking-[-0.04em]">
               Things I&apos;ve built.
             </h1>
@@ -28,9 +25,8 @@ export default function WorkPage() {
       <ArcCarousel
         projects={projects}
         sectionId="featured"
-        eyebrow="Featured"
         title="Featured work."
-        subtitle="Drag, swipe or use the arrows to browse. Every project here is a placeholder for now."
+        subtitle="Drag or swipe to browse. Every project here is a placeholder for now."
         cta={{ href: "#all-projects", label: "Browse all projects", id: "featured-all-btn" }}
         caseLinkId="featured-case-link"
       />

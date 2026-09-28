@@ -13,12 +13,10 @@ export default function HomePage() {
       <ArcCarousel
         projects={projects}
         sectionId="work"
-        eyebrow="01 / Selected work"
         title="Things I've built."
         subtitle="Web apps, mobile apps, and the APIs behind them. Every project shown here is a placeholder."
         cta={{ href: "/work", label: "All work", id: "work-all-btn" }}
         caseLinkId="work-case-link"
-        showFeatures
       />
       <Writing />
       <Process />

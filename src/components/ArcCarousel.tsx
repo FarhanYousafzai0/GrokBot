@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Layers, Monitor, Smartphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { memo, useEffect, useRef, useState, type MutableRefObject } from "react";
 import type { Project } from "@/data/projects";
 import { Magnetic } from "./Magnetic";
-import { ArcMock } from "./mocks";
 
 type ArcApi = {
   go: (direction: number) => void;
@@ -15,34 +15,11 @@ type ArcApi = {
 type CarouselProps = {
   projects: Project[];
   sectionId: string;
-  eyebrow: string;
   title: string;
   subtitle: string;
   cta: { href: string; label: string; id: string };
   caseLinkId: string;
-  showFeatures?: boolean;
 };
-
-const features = [
-  {
-    icon: Monitor,
-    title: "Web apps",
-    body: "React frontends backed by Node and Express APIs, with MongoDB for data.",
-    delay: "0ms",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile apps",
-    body: "React Native apps for iOS and Android, built from one codebase.",
-    delay: "80ms",
-  },
-  {
-    icon: Layers,
-    title: "End to end",
-    body: "From the database and API through to the web and mobile clients.",
-    delay: "160ms",
-  },
-];
 
 const ArcEngine = memo(function ArcEngine({
   projects,
@@ -156,6 +133,7 @@ const ArcEngine = memo(function ArcEngine({
     };
 
     const onPointerDown = (event: globalThis.PointerEvent) => {
+      if ((event.target as HTMLElement).closest("a")) return;
       dragging = true;
       moved = 0;
       startX = lastX = event.clientX;
@@ -316,14 +294,28 @@ const ArcEngine = memo(function ArcEngine({
             tabIndex={-1}
             aria-label={project.name}
           >
-            <div className={`arc-inner ${project.dark ? "bg-ink" : "bg-paper"}`}>
-              <div
-                className={`absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider ${project.dark ? "text-paper/60" : "text-ink/60"}`}
-              >
-                <span>{project.num}</span>
-                <span>{project.type}</span>
+            <div className="arc-inner bg-paper text-ink flex flex-col p-2">
+              <div className="relative h-[46%] shrink-0 rounded-[14px] bg-[#e4e2db] overflow-hidden">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    sizes="240px"
+                    className="object-cover"
+                  />
+                ) : null}
               </div>
-              <ArcMock mock={project.mock} dark={project.dark} />
+              <div className="flex flex-col flex-1 min-h-0 px-1 pt-2 pb-1">
+                <div className="font-display text-[13px] font-medium leading-tight">{project.title}</div>
+                <p className="mt-1 text-[10px] leading-snug text-ink/65 line-clamp-3">{project.summary}</p>
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="mt-auto inline-flex w-fit items-center gap-1 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-2.5 py-1.5 text-[10px] font-medium"
+                >
+                  View case study <ArrowRight size={11} />
+                </Link>
+              </div>
               <div className="ht" />
             </div>
           </div>
@@ -371,55 +363,24 @@ function LabelBar({
   const project = projects[index] ?? projects[0];
 
   return (
-    <div className="relative container mx-auto px-5 sm:px-6 max-w-4xl mt-6 flex flex-wrap sm:flex-nowrap items-center justify-center gap-3 sm:gap-4">
-      <button
-        type="button"
-        className="arc-btn arc-prev order-2 sm:order-1 w-12 h-12 shrink-0 rounded-full border border-paper/25 flex items-center justify-center"
-        aria-label="Previous project"
-        onClick={() => api.current.go(-1)}
-      >
-        <ArrowLeft size={18} />
-      </button>
+    <div className="relative container mx-auto px-5 sm:px-6 max-w-4xl mt-6 flex justify-center">
       <div
-        className="arc-label order-1 sm:order-2 w-full sm:w-auto sm:flex-1 min-w-0 bg-paper text-ink rounded-[24px] sm:rounded-full pl-5 pr-2 py-2 sm:py-2"
+        className="arc-label w-full sm:w-auto bg-paper text-ink rounded-[24px] sm:rounded-full pl-5 pr-2 py-2"
         aria-live="polite"
       >
-        <div className={`arc-label-inner flex flex-wrap sm:flex-nowrap items-center gap-x-4 gap-y-2 justify-between ${swap ? "swap" : ""}`}>
-          <div className="min-w-0 sm:shrink-0 py-1">
-            <div className="font-mono text-[10px] uppercase tracking-wider text-ink/50">
-              Project {project.num}, {project.type}
-            </div>
-            <div className="font-display text-lg font-medium leading-tight sm:whitespace-nowrap">
-              {project.name}
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-1.5 order-3 sm:order-none w-full sm:w-auto sm:flex-1 sm:min-w-0 sm:justify-center">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] font-mono uppercase px-2.5 py-1 border border-ink/15 rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
+        <div className={`arc-label-inner flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 ${swap ? "swap" : ""}`}>
+          <div className="font-display text-lg font-medium leading-tight py-1 pr-1">
+            {project.name}
           </div>
           <Link
             href={`/work/${project.slug}`}
             id={caseLinkId}
-            className="shrink-0 inline-flex items-center gap-1.5 bg-ink text-paper rounded-full px-4 py-2.5 text-sm font-medium"
+            className="shrink-0 inline-flex items-center gap-1.5 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-4 py-2.5 text-sm font-medium"
           >
             View case study <ArrowRight size={16} />
           </Link>
         </div>
       </div>
-      <button
-        type="button"
-        className="arc-btn arc-next order-3 w-12 h-12 shrink-0 rounded-full border border-paper/25 flex items-center justify-center"
-        aria-label="Next project"
-        onClick={() => api.current.go(1)}
-      >
-        <ArrowRight size={18} />
-      </button>
     </div>
   );
 }
@@ -427,12 +388,10 @@ function LabelBar({
 export function ArcCarousel({
   projects,
   sectionId,
-  eyebrow,
   title,
   subtitle,
   cta,
   caseLinkId,
-  showFeatures = false,
 }: CarouselProps) {
   const api = useRef<ArcApi>({
     go: () => {},
@@ -443,7 +402,6 @@ export function ArcCarousel({
     <section id={sectionId} className="relative bg-ink text-paper overflow-hidden py-[clamp(4.5rem,9vw,8rem)]">
       <div className="absolute inset-0 grid-paper pointer-events-none" />
       <div className="relative container mx-auto px-5 sm:px-6 max-w-3xl text-center reveal">
-        <span className="font-mono text-xs uppercase tracking-[0.08em] text-paper/60 mb-4 block">{eyebrow}</span>
         <h2 className="font-display font-medium text-[clamp(2.25rem,5.2vw,4.5rem)] leading-[0.98] tracking-[-0.035em]">
           {title}
         </h2>
@@ -458,26 +416,6 @@ export function ArcCarousel({
       </div>
       <ArcEngine projects={projects} api={api} />
       <LabelBar projects={projects} api={api} caseLinkId={caseLinkId} />
-      {showFeatures ? (
-        <div className="relative container mx-auto px-5 sm:px-6 max-w-5xl mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {features.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.title}
-                className="text-center md:text-left reveal"
-                style={{ transitionDelay: feature.delay }}
-              >
-                <div className="w-11 h-11 rounded-full border border-paper/20 flex items-center justify-center mx-auto md:mx-0">
-                  <Icon size={18} />
-                </div>
-                <h3 className="font-display text-xl font-medium mt-5">{feature.title}</h3>
-                <p className="mt-2 text-sm text-paper/60 max-w-xs mx-auto md:mx-0">{feature.body}</p>
-              </div>
-            );
-          })}
-        </div>
-      ) : null}
     </section>
   );
 }

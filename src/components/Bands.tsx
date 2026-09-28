@@ -1,4 +1,5 @@
 import { ArrowRight, Map, Server, Smartphone, Wrench } from "lucide-react";
+import { contact } from "@/data/contact";
 import Image from "next/image";
 import { Magnetic } from "./Magnetic";
 
@@ -32,7 +33,6 @@ export function Process() {
   return (
     <section className="py-24 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
       <div className="mb-16 reveal">
-        <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">03 / How I work</span>
         <h2 className="font-display text-[clamp(2.25rem,4.4vw,3rem)] font-medium tracking-tight">My process</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -60,18 +60,15 @@ export function Process() {
 export function AboutTeaser() {
   return (
     <section className="py-24 md:py-32 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
-      <div className="mb-16 reveal">
-        <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">04 / About</span>
-      </div>
       <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center reveal">
         <div className="w-full md:w-5/12">
           <div className="relative aspect-square w-full max-w-[400px] mx-auto bg-ink/[0.04] border border-ink/10 shadow-soft rounded-[24px] overflow-hidden flex items-end justify-center transition-transform duration-500 hover:-translate-y-1.5 lift">
             <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
             <Image
-              src="/images/farhan-cutout-bw.png"
+              src="/images/farhan-seated.png"
               alt="Farhan Yousafzai"
-              width={741}
-              height={933}
+              width={691}
+              height={954}
               sizes="(min-width: 768px) 400px, 92vw"
               className="absolute left-0 right-0 bottom-0 w-full h-[94%] object-cover object-top select-none"
               style={{ width: "100%", height: "94%", objectFit: "cover", objectPosition: "top" }}
@@ -110,22 +107,24 @@ export function HomeCTA() {
           Have an idea for web or mobile? Let&apos;s build it.
         </h2>
         <p className="text-[clamp(1rem,2.2vw,1.5rem)] text-paper/70 font-mono mb-12 relative z-10 break-words">
-          hello@farhan.dev (placeholder)
+          {contact.email}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
           <Magnetic
             href="/contact"
             id="cta-contact-btn"
-            className="inline-flex items-center justify-center bg-paper text-ink rounded-full px-8 py-4 text-base font-medium hover:scale-105 transition-transform duration-300 lift"
+            className="inline-flex items-center justify-center bg-paper text-ink border border-ink/15 rounded-full px-8 py-4 text-base font-medium hover:scale-105 transition-transform duration-300 lift"
           >
             Get in touch
           </Magnetic>
           <a
-            href="#"
+            href={contact.github}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-transparent border border-paper/20 text-paper rounded-full px-8 py-4 text-base font-medium hover:bg-paper/10 transition-colors"
             id="cta-github-btn"
           >
-            GitHub (placeholder)
+            GitHub
           </a>
         </div>
       </div>
@@ -138,7 +137,6 @@ export function NextStep({ id }: { id: string }) {
     <section className="py-24 px-5 sm:px-6 container mx-auto max-w-5xl reveal">
       <div className="bg-ink text-paper rounded-[32px] px-6 py-10 sm:p-10 md:p-16 flex flex-col md:flex-row md:items-center justify-between gap-8">
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-paper/60 mb-4 block">Next step</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight leading-[1.02]">
             Have a project in mind?
             <br />
@@ -148,7 +146,7 @@ export function NextStep({ id }: { id: string }) {
         <Magnetic
           href="/contact"
           id={id}
-          className="inline-flex items-center gap-2 bg-paper text-ink rounded-full px-7 py-4 font-medium transition-transform duration-300 shrink-0"
+          className="inline-flex items-center gap-2 bg-paper text-ink border border-ink/15 rounded-full px-7 py-4 font-medium transition-transform duration-300 shrink-0"
         >
           Get in touch <ArrowRight size={16} />
         </Magnetic>

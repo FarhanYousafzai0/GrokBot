@@ -10,14 +10,13 @@ export function Writing() {
     <section id="writing" className="py-24 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">02 / Writing</span>
           <h2 className="font-display text-[clamp(2.25rem,4.4vw,3rem)] font-medium tracking-tight">Latest posts.</h2>
           <p className="mt-4 text-ink/70 max-w-xl">Short notes. Every post here is a placeholder.</p>
         </div>
         <Magnetic
           href="/blog"
           id="writing-all-btn"
-          className="inline-flex items-center gap-2 bg-ink text-paper rounded-full px-6 py-3 text-sm font-medium shadow-soft transition-transform duration-300 shrink-0"
+          className="inline-flex items-center gap-2 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-6 py-3 text-sm font-medium shadow-soft transition-transform duration-300 shrink-0"
         >
           View all posts <ArrowRight size={16} />
         </Magnetic>

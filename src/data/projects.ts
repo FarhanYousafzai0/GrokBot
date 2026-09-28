@@ -16,6 +16,7 @@ export type Project = {
   imageEnd?: boolean;
   tile: "ink" | "muted";
   summary: string;
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -32,7 +33,7 @@ export const projects: Project[] = [
     inGrid: true,
     featured: true,
     tile: "ink",
-    summary: "[Short description of the product, placeholder].",
+    summary: "A web and mobile product for the day-to-day work of a small team.",
   },
   {
     slug: "project-two",
@@ -46,7 +47,7 @@ export const projects: Project[] = [
     mock: "browser",
     inGrid: true,
     tile: "muted",
-    summary: "[A web dashboard, placeholder].",
+    summary: "A web dashboard for keeping the important numbers in one place.",
   },
   {
     slug: "project-three",
@@ -60,7 +61,7 @@ export const projects: Project[] = [
     mock: "phone",
     inGrid: true,
     tile: "muted",
-    summary: "[A mobile app, placeholder].",
+    summary: "A mobile app for iOS and Android, shipped from one codebase.",
   },
   {
     slug: "project-four",
@@ -74,7 +75,7 @@ export const projects: Project[] = [
     mock: "browser",
     inGrid: true,
     tile: "ink",
-    summary: "[An API and admin panel, placeholder].",
+    summary: "An admin panel that sits on top of a small API.",
   },
   {
     slug: "project-five",
@@ -88,7 +89,7 @@ export const projects: Project[] = [
     mock: "phone",
     inGrid: true,
     tile: "muted",
-    summary: "[A companion mobile app, placeholder].",
+    summary: "A companion app that stays in step with the web product.",
   },
   {
     slug: "project-six",
@@ -104,7 +105,7 @@ export const projects: Project[] = [
     featured: true,
     imageEnd: true,
     tile: "muted",
-    summary: "[A web app with a mobile client, placeholder].",
+    summary: "A product with a web app and a matching mobile client.",
   },
   {
     slug: "project-seven",
@@ -118,7 +119,7 @@ export const projects: Project[] = [
     mock: "browser",
     inGrid: false,
     tile: "muted",
-    summary: "[placeholder]",
+    summary: "A small web app, ready for a real image and write-up.",
   },
 ];
 

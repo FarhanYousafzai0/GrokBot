@@ -13,9 +13,6 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
         <div className="relative container mx-auto max-w-6xl">
           <div className="reveal">
-            <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">Blog</span>
-          </div>
-          <div className="reveal" style={{ transitionDelay: "80ms" }}>
             <h1 className="font-display font-medium text-[clamp(2.75rem,8vw,6rem)] leading-[0.95] tracking-[-0.04em]">
               Writing.
             </h1>

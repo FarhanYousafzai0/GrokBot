@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body {
+  html {
     max-width: 100%;
-    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
+    max-width: 100%;
     background-color: #f5f4f0;
     color: #111111;
     font-family: var(--font-body), sans-serif;
@@ -231,12 +235,13 @@
   width: var(--pw);
   max-width: 740px;
   height: auto;
+  filter: url(#portrait-edge);
 }
 
 @media (min-width: 1024px) {
   .hero-sec {
-    --pw: min(740px, max(300px, calc((100vh - 420px) / 1.26)), calc(100vw - 32rem));
-    height: max(100vh, 840px);
+    --pw: min(400px, max(320px, calc((100vh - 500px) / 1.39)));
+    height: auto;
   }
 
   #hero-stage {
@@ -244,38 +249,8 @@
   }
 
   #hero-portrait {
-    margin-bottom: -2.75rem;
-  }
-
-  .hc {
-    position: absolute;
-    z-index: 30;
-  }
-
-  .hc-1 {
-    top: 0;
-    right: calc(50% + var(--pw) / 2 + 1.5rem);
-    left: auto;
-    width: 12rem;
-  }
-
-  .hc-2 {
-    top: 0;
-    left: calc(50% + var(--pw) / 2 + 1.5rem);
-    width: 10rem;
-  }
-
-  .hc-3 {
-    bottom: 0;
-    right: calc(50% + var(--pw) / 2 + 1.5rem);
-    left: auto;
-    width: 14rem;
-  }
-
-  .hc-4 {
-    bottom: 4%;
-    left: calc(50% + var(--pw) / 2 + 1.5rem);
-    width: 13rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -294,6 +269,7 @@
   .animate-drift-2,
   .animate-drift-3,
   .animate-drift-4,
+  .animate-globe-spin,
   .lg\:animate-drift-1,
   .lg\:animate-drift-2,
   .lg\:animate-drift-3,

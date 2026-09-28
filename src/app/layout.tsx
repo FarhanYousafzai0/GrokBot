@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`scroll-smooth ${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="font-body antialiased">
-        <div className="min-h-screen bg-paper text-ink relative w-full">
+        <div className="min-h-screen bg-paper text-ink relative w-full overflow-x-clip">
           <SiteHeader />
           {children}
           <Footer />

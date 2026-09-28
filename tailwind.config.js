@@ -60,6 +60,7 @@ module.exports = {
         "drift-3": "drift 8s ease-in-out infinite alternate",
         "drift-4": "drift 9s ease-in-out infinite alternate-reverse",
         marquee: "marquee 30s linear infinite",
+        "globe-spin": "globe-spin 9s linear infinite",
       },
       keyframes: {
         drift: {
@@ -69,6 +70,10 @@ module.exports = {
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        "globe-spin": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
       backgroundImage: {

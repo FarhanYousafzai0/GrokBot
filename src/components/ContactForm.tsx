@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
+import { contact } from "@/data/contact";
 import { Magnetic } from "./Magnetic";
 
 const types = ["Web", "Mobile", "Both"];
@@ -104,7 +105,7 @@ export function ContactForm() {
           <p className="text-sm text-ink/50">This form is a design placeholder.</p>
           <Magnetic
             type="submit"
-            className="inline-flex items-center justify-center gap-2 bg-ink text-paper rounded-full px-8 py-4 text-base font-medium shadow-soft transition-transform duration-300"
+            className="inline-flex items-center justify-center gap-2 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-8 py-4 text-base font-medium shadow-soft transition-transform duration-300"
           >
             Send message <ArrowRight size={16} />
           </Magnetic>
@@ -115,17 +116,18 @@ export function ContactForm() {
         <div className="bg-paper border border-ink/10 rounded-[24px] p-7 shadow-soft hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 reveal lift" style={{ transitionDelay: "80ms" }}>
           <span className="font-mono text-[11px] uppercase tracking-wider text-ink/50">Email</span>
           <div className="mt-3 flex items-center justify-between gap-3">
-            <span className="flex flex-col min-w-0">
-              <span className="font-medium text-lg break-words">hello@farhan.dev</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-ink/50 mt-1">(placeholder)</span>
-            </span>
+            <a href={`mailto:${contact.email}`} className="font-medium text-lg break-words hover:underline">
+              {contact.email}
+            </a>
             <button
               type="button"
               id="copy-email"
               className="shrink-0 text-sm border border-ink/15 rounded-full px-3 py-1.5 hover:bg-ink hover:text-paper transition-colors"
               onClick={() => {
-                setCopied(true);
-                window.setTimeout(() => setCopied(false), 1500);
+                navigator.clipboard.writeText(contact.email).then(() => {
+                  setCopied(true);
+                  window.setTimeout(() => setCopied(false), 1500);
+                });
               }}
             >
               {copied ? "Copied" : "Copy"}
@@ -135,14 +137,11 @@ export function ContactForm() {
         <div className="bg-paper border border-ink/10 rounded-[24px] p-7 shadow-soft hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 reveal lift" style={{ transitionDelay: "160ms" }}>
           <span className="font-mono text-[11px] uppercase tracking-wider text-ink/50">Socials</span>
           <div className="mt-4 flex flex-wrap gap-2">
-            <a href="#" className="inline-flex items-center gap-2 text-sm border border-ink/15 rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition-colors" id="contact-github">
-              <Github size={16} /> GitHub (placeholder)
+            <a href={contact.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm border border-ink/15 rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition-colors" id="contact-github">
+              <Github size={16} /> GitHub
             </a>
-            <a href="#" className="inline-flex items-center gap-2 text-sm border border-ink/15 rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition-colors" id="contact-linkedin">
-              <Linkedin size={16} /> LinkedIn (placeholder)
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 text-sm border border-ink/15 rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition-colors" id="contact-x">
-              <Twitter size={16} /> X (placeholder)
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm border border-ink/15 rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition-colors" id="contact-linkedin">
+              <Linkedin size={16} /> LinkedIn
             </a>
           </div>
         </div>
@@ -159,16 +158,16 @@ export function ContactForm() {
               <span>Based in</span>
               <span className="text-ink">Pakistan</span>
             </li>
-            <li className="flex justify-between border-t border-ink/10 pt-2">
-              <span>Response time</span>
-              <span className="text-ink">[placeholder]</span>
+            <li className="flex justify-between gap-4 border-t border-ink/10 pt-2">
+              <span>Phone</span>
+              <a href={contact.phoneHref} className="text-ink hover:underline">{contact.phone}</a>
             </li>
           </ul>
         </div>
-        <a href="#" className="group bg-ink text-paper rounded-[24px] p-7 hover:-translate-y-1.5 transition-all duration-300 reveal lift flex items-center justify-between" style={{ transitionDelay: "320ms" }} id="contact-book-call">
+        <a href={contact.phoneHref} className="group bg-ink text-paper rounded-[24px] p-7 hover:-translate-y-1.5 transition-all duration-300 reveal lift flex items-center justify-between" style={{ transitionDelay: "320ms" }} id="contact-book-call">
           <div>
             <span className="font-mono text-[11px] uppercase tracking-wider text-paper/60">Prefer a call?</span>
-            <div className="font-display text-2xl font-medium mt-2">Book a call (placeholder)</div>
+            <div className="font-display text-2xl font-medium mt-2">{contact.phone}</div>
           </div>
           <span className="w-11 h-11 rounded-full border border-paper/20 flex items-center justify-center transition-transform group-hover:translate-x-1 lift">
             <ArrowUpRight size={18} />

@@ -57,7 +57,6 @@ export function CaseStudy({ project }: { project: Project }) {
           </Link>
           <div className="mt-10 grid md:grid-cols-12 gap-8 items-end">
             <div className="md:col-span-8 reveal" style={{ transitionDelay: "80ms" }}>
-              <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">Case study</span>
               <h1 className="font-display font-medium text-[clamp(2.6rem,7.5vw,5.75rem)] leading-[0.95] tracking-[-0.04em]">
                 {project.title}
                 <br />
@@ -126,7 +125,6 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl grid md:grid-cols-12 gap-10 border-b border-ink/10">
         <div className="md:col-span-4 reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">01 / Problem</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight leading-[1.02]">
             What needed solving.
           </h2>
@@ -139,7 +137,6 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl">
         <div className="reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">02 / Approach</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">How I approached it.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -161,7 +158,6 @@ export function CaseStudy({ project }: { project: Project }) {
         <div className="container mx-auto max-w-6xl">
           <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">03 / Key screens</span>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight">Key screens.</h2>
             </div>
             <p className="text-ink/60 max-w-sm">
@@ -195,7 +191,6 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl">
         <div className="reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">04 / Architecture</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">How it fits together.</h2>
         </div>
         <div className="reveal bg-paper border border-ink/10 rounded-[32px] p-6 sm:p-8 md:p-14 shadow-soft">
@@ -241,7 +236,6 @@ export function CaseStudy({ project }: { project: Project }) {
 
       <section className="px-5 sm:px-6 py-20 md:py-28 container mx-auto max-w-6xl border-t border-ink/10">
         <div className="reveal">
-          <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink/60 mb-4 block">05 / Results</span>
           <h2 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-12">What came out of it.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
