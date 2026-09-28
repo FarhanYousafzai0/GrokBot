@@ -7,15 +7,11 @@ import { useCallback, useEffect, useState } from "react";
 import { Magnetic } from "./Magnetic";
 
 const links = [
-  { href: "/work", label: "Work", id: "nav-work", menuId: "menu-work", index: "01" },
-  { href: "/about", label: "About", id: "nav-about", menuId: "menu-about", index: "02" },
-  { href: "/blog", label: "Blog", id: "nav-blog", menuId: "menu-blog", index: "03" },
-  { href: "/contact", label: "Contact", id: "nav-contact", menuId: "menu-contact", index: "04" },
+  { href: "/#work", label: "Work", id: "nav-work", menuId: "menu-work", index: "01" },
+  { href: "/#about", label: "About", id: "nav-about", menuId: "menu-about", index: "02" },
+  { href: "/#writing", label: "Blog", id: "nav-blog", menuId: "menu-blog", index: "03" },
+  { href: "/#contact", label: "Contact", id: "nav-contact", menuId: "menu-contact", index: "04" },
 ];
-
-function isCurrent(href: string, pathname: string) {
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -60,25 +56,16 @@ export function SiteHeader() {
           Farhan Yousafzai
         </Link>
         <div className="hidden md:flex md:col-start-2 items-center justify-center gap-5 lg:gap-8 text-sm font-medium text-ink/80">
-          {links.map((link) => {
-            const current = isCurrent(link.href, pathname);
-            return (
+          {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 id={link.id}
-                aria-current={current ? "page" : undefined}
-                className={
-                  current
-                    ? "text-ink inline-flex items-center gap-1.5"
-                    : "hover:text-ink transition-colors"
-                }
+                className="hover:text-ink transition-colors"
               >
-                {current ? <span className="w-1.5 h-1.5 rounded-full bg-ink" /> : null}
                 {link.label}
               </Link>
-            );
-          })}
+            ))}
         </div>
         <div className="justify-self-end md:col-start-3 flex items-center gap-2">
           <Magnetic

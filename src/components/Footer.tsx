@@ -7,16 +7,16 @@ export function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="font-display font-medium text-xl tracking-tight">Farhan Yousafzai</div>
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm font-medium text-ink/70">
-          <Link href="/work" className="hover:text-ink transition-colors" id="footer-work">
+          <Link href="/#work" className="hover:text-ink transition-colors" id="footer-work">
             Work
           </Link>
-          <Link href="/about" className="hover:text-ink transition-colors" id="footer-about">
+          <Link href="/#about" className="hover:text-ink transition-colors" id="footer-about">
             About
           </Link>
-          <Link href="/blog" className="hover:text-ink transition-colors" id="footer-blog">
+          <Link href="/#writing" className="hover:text-ink transition-colors" id="footer-blog">
             Blog
           </Link>
-          <Link href="/contact" className="hover:text-ink transition-colors" id="footer-contact">
+          <Link href="/#contact" className="hover:text-ink transition-colors" id="footer-contact">
             Contact
           </Link>
           <span className="w-1 h-1 rounded-full bg-ink/20 hidden md:block" />

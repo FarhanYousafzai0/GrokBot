@@ -4,4 +4,5 @@ export const contact = {
   phoneHref: "tel:+923197421574",
   github: "https://github.com/FarhanYousafzai0",
   linkedin: "https://www.linkedin.com/in/muhammad-farhan-8a1363352/",
+  whatsappHref: `https://wa.me/923197421574?text=${encodeURIComponent("Hi Farhan, I'd like to get a quote.")}`,
 };

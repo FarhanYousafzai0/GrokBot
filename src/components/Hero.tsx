@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { contact } from "@/data/contact";
 import { Magnetic } from "./Magnetic";
 
 function RolePill() {
   return (
-    <p className="inline-flex items-center gap-3 whitespace-nowrap rounded-full border-[1.5px] border-ink px-5 py-2.5 font-display text-sm font-medium uppercase tracking-[0.04em] text-ink">
+    <p className="inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-ink px-5 py-2.5 font-display text-sm font-medium uppercase tracking-[0.04em] text-[#fff]">
       <span>Web Developer</span>
-      <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-ink" aria-hidden="true" />
+      <span className="h-2 w-2 shrink-0 rounded-full bg-[#fff]" aria-hidden="true" />
       <span>App Developer</span>
     </p>
   );
@@ -72,11 +72,13 @@ export function Hero() {
           style={{ transitionDelay: "200ms" }}
         >
           <Magnetic
-            href="/contact"
+            href={contact.whatsappHref}
             id="hero-call-btn"
-            className="inline-flex items-center gap-2 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-7 py-4 text-base font-medium shadow-soft transition-transform duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-[#2436C5] text-[#fff] rounded-full px-9 py-4 text-sm font-medium uppercase tracking-[0.08em] shadow-soft transition-transform duration-300 hover:bg-[#1c2ba0]"
           >
-            Book a call <ArrowRight size={16} />
+            Get a quote here
           </Magnetic>
         </div>
       </div>

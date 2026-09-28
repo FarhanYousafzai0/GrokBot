@@ -10,6 +10,8 @@ type Props = {
   id?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  target?: string;
+  rel?: string;
 };
 
 export function Magnetic({
@@ -19,6 +21,8 @@ export function Magnetic({
   id,
   type = "button",
   onClick,
+  target,
+  rel,
 }: Props) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
 
@@ -52,7 +56,7 @@ export function Magnetic({
   if (href) {
     if (href.startsWith("#") || href.startsWith("http")) {
       return (
-        <a ref={ref as Ref<HTMLAnchorElement>} href={href} id={id} className={classes}>
+        <a ref={ref as Ref<HTMLAnchorElement>} href={href} id={id} className={classes} target={target} rel={rel}>
           {children}
         </a>
       );
