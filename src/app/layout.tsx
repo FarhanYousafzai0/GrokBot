@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Farhan Yousafzai, MERN stack and React Native developer based in Pakistan.",
+  icons: {
+    icon: [{ url: "/images/favicon.png", type: "image/png" }],
+    apple: [{ url: "/images/favicon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
