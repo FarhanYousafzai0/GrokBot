@@ -1,5 +1,5 @@
 const LINE =
-  "MongoDB, Express, React, Node.js, React Native, TypeScript (placeholder), REST APIs";
+  "React, Next.js, NestJS, TypeScript, MongoDB, Supabase, Google APIs, Stripe, Motion";
 
 function Track({ hidden = false }: { hidden?: boolean }) {
   return (

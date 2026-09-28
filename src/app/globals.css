@@ -114,6 +114,51 @@
   min-height: 280px;
 }
 
+.arc-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(88px, 22vw, 240px);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.arc-edge-l {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    #111111 0%,
+    rgba(17, 17, 17, 0.78) 42%,
+    rgba(17, 17, 17, 0) 100%
+  );
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 28%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 28%, transparent 100%);
+}
+
+.arc-edge-r {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    #111111 0%,
+    rgba(17, 17, 17, 0.78) 42%,
+    rgba(17, 17, 17, 0) 100%
+  );
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  -webkit-mask-image: linear-gradient(270deg, #000 0%, #000 28%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 0%, #000 28%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arc-edge-l,
+  .arc-edge-r {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 .arc-stage {
   position: absolute;
   left: 50%;

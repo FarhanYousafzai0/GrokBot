@@ -1,11 +1,11 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { memo, useEffect, useRef, useState, type MutableRefObject } from "react";
 import type { Project } from "@/data/projects";
 import { Magnetic } from "./Magnetic";
+import { ProjectImage } from "./ProjectImage";
 
 type ArcApi = {
   go: (direction: number) => void;
@@ -17,7 +17,7 @@ type CarouselProps = {
   sectionId: string;
   title: string;
   subtitle: string;
-  cta: { href: string; label: string; id: string };
+  cta?: { href: string; label: string; id: string };
   caseLinkId: string;
 };
 
@@ -59,25 +59,37 @@ const ArcEngine = memo(function ArcEngine({
     let raf = 0;
 
     const rel = (index: number) => {
-      let distance = (((index - offset) % count) + count) % count;
-      if (distance > count / 2) distance -= count;
+      let distance = index - offset;
+      distance -= count * Math.round(distance / count);
       return distance;
+    };
+
+    const wrapOffset = () => {
+      if (offset >= 0 && offset < count) return;
+      const wrapped = ((offset % count) + count) % count;
+      const delta = offset - wrapped;
+      offset = wrapped;
+      target -= delta;
     };
 
     const render = (force: boolean) => {
       let best = 0;
       let bestDistance = 99;
+      const fadeStart = Math.max(1.1, count / 2 - 0.9);
+      const fadeEnd = Math.max(fadeStart + 0.2, count / 2 - 0.12);
       cards.forEach((card, index) => {
         const distance = rel(index);
+        const absDistance = Math.abs(distance);
         const angle = -distance * step;
-        const abs = Math.abs(angle);
         card.style.setProperty("--a", `${angle.toFixed(3)}deg`);
-        const opacity = abs < 62 ? 1 : Math.max(0, 1 - (abs - 62) / 16);
+        let opacity = 1;
+        if (absDistance >= fadeEnd) opacity = 0;
+        else if (absDistance > fadeStart) opacity = 1 - (absDistance - fadeStart) / (fadeEnd - fadeStart);
         card.style.opacity = opacity.toFixed(3);
         card.style.pointerEvents = opacity < 0.3 ? "none" : "auto";
-        card.style.zIndex = String(100 - Math.round(Math.abs(distance) * 10));
-        if (Math.abs(distance) < bestDistance) {
-          bestDistance = Math.abs(distance);
+        card.style.zIndex = String(100 - Math.round(absDistance * 10));
+        if (absDistance < bestDistance) {
+          bestDistance = absDistance;
           best = index;
         }
       });
@@ -248,11 +260,7 @@ const ArcEngine = memo(function ArcEngine({
       const before = offset;
       offset += (target - offset) * k;
       if (Math.abs(target - offset) < 0.0005) offset = target;
-      if (Math.abs(offset) > count * 40) {
-        const turns = count * Math.round(offset / count);
-        offset -= turns;
-        target -= turns;
-      }
+      wrapOffset();
       if (offset !== before) render(false);
       raf = requestAnimationFrame(tick);
     };
@@ -285,6 +293,8 @@ const ArcEngine = memo(function ArcEngine({
       aria-roledescription="carousel"
       aria-label="Projects carousel. Drag, swipe or use arrow keys."
     >
+      <div className="arc-edge arc-edge-l" aria-hidden="true" />
+      <div className="arc-edge arc-edge-r" aria-hidden="true" />
       <div className="arc-stage">
         {projects.map((project) => (
           <div
@@ -297,7 +307,7 @@ const ArcEngine = memo(function ArcEngine({
             <div className="arc-inner bg-paper text-ink flex flex-col p-2">
               <div className="relative h-[46%] shrink-0 rounded-[14px] bg-[#e4e2db] overflow-hidden">
                 {project.image ? (
-                  <Image
+                  <ProjectImage
                     src={project.image}
                     alt=""
                     fill
@@ -406,13 +416,15 @@ export function ArcCarousel({
           {title}
         </h2>
         <p className="mt-5 text-[clamp(1rem,1.3vw,1.125rem)] text-paper/65 max-w-xl mx-auto">{subtitle}</p>
-        <Magnetic
-          href={cta.href}
-          id={cta.id}
-          className="mt-8 inline-flex items-center gap-2 border border-paper/25 text-paper rounded-full px-6 py-3 text-sm font-medium hover:bg-paper hover:text-ink transition-colors duration-300"
-        >
-          {cta.label} <ArrowRight size={16} />
-        </Magnetic>
+        {cta ? (
+          <Magnetic
+            href={cta.href}
+            id={cta.id}
+            className="mt-8 inline-flex items-center gap-2 border border-paper/25 text-paper rounded-full px-6 py-3 text-sm font-medium hover:bg-paper hover:text-ink transition-colors duration-300"
+          >
+            {cta.label} <ArrowRight size={16} />
+          </Magnetic>
+        ) : null}
       </div>
       <ArcEngine projects={projects} api={api} />
       <LabelBar projects={projects} api={api} caseLinkId={caseLinkId} />
