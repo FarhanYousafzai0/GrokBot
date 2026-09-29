@@ -1,48 +1,36 @@
-import { Plus } from "lucide-react";
 import { posts } from "@/data/posts";
+import { BlogPostCard } from "./BlogPostCard";
 
 export function Writing() {
+  const noteCount = posts.length;
+
   return (
-    <section id="writing" className="py-24 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10 scroll-mt-28">
-      <div className="mb-12 reveal text-center">
-        <h2 className="font-display text-[clamp(2.25rem,4.4vw,3rem)] font-medium tracking-tight">Writing.</h2>
-        <p className="mt-4 text-ink/70 max-w-xl mx-auto">Notes on building for web and mobile. Every post here is a placeholder.</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {posts.map((post, index) => (
-          <article
-            key={post.slug}
-            className="group bg-paper border border-ink/10 rounded-[24px] p-7 md:p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1.5 reveal lift flex flex-col"
-            style={{ transitionDelay: `${(index % 2) * 80}ms` }}
-          >
-            <div className="flex items-center justify-between gap-3 mb-5">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-ink/60">Post {post.num}</span>
-              <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-ink text-paper">{post.tag}</span>
-            </div>
-            <h3 className="font-display text-2xl md:text-3xl font-medium tracking-tight leading-tight mb-3">{post.title}</h3>
-            <p className="text-ink/70 mb-6">{post.excerpt}</p>
-            <div className="flex items-center justify-between gap-3 text-xs text-ink/60 font-mono">
-              <span>{post.date}</span>
-              <span>{post.readTime}</span>
-            </div>
-            <details className="group mt-6 border-t border-ink/10 pt-5">
-              <summary
-                className="flex items-center justify-between gap-4 cursor-pointer list-none font-medium text-sm"
-                id={`writing-card-link-${post.num}`}
-              >
-                Read post
-                <span className="w-9 h-9 shrink-0 rounded-full border border-ink/15 flex items-center justify-center transition-transform group-open:rotate-45">
-                  <Plus size={14} />
-                </span>
-              </summary>
-              <div className="mt-4 flex flex-col gap-4 text-ink/80 leading-relaxed">
-                <p>[Opening paragraph, placeholder.]</p>
-                <p>[A second paragraph, placeholder.]</p>
-                <p>[A closing paragraph, placeholder.]</p>
-              </div>
-            </details>
-          </article>
-        ))}
+    <section id="writing" className="relative scroll-mt-28 border-t border-ink/10 px-5 py-24 sm:px-6">
+      <div className="pointer-events-none absolute inset-0 bg-svg-grid opacity-70" />
+      <div className="relative container mx-auto max-w-6xl">
+        <div className="reveal mb-12 text-center md:mb-14">
+          <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">
+            Blog · {noteCount} notes
+          </p>
+          <h2 className="font-display text-[clamp(2.35rem,4.8vw,3.6rem)] font-medium leading-[1.02] tracking-tight">
+            Before you hand the work over.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
+            Jev, Grok Bot, and Muse are the names in every build conversation this month. These notes explain what
+            each one is, who it is for, and where software you own still has to exist.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 items-stretch gap-4 overflow-visible sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:px-1 lg:py-4">
+          {posts.map((post, index) => (
+            <BlogPostCard
+              key={post.slug}
+              post={post}
+              revealDelay={(index % 3) * 70}
+              priority={index < 3}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
