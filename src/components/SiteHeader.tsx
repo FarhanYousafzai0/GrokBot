@@ -49,38 +49,38 @@ export function SiteHeader() {
 
   return (
     <>
-      <nav className="fixed top-3 md:top-5 left-1/2 -translate-x-1/2 z-50 bg-paper border border-ink/10 rounded-full shadow-soft px-2 py-2 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center w-[calc(100%-24px)] md:w-[min(92%,72rem)] max-w-6xl">
+      <nav className="fixed top-3 md:top-5 left-1/2 z-50 grid w-[calc(100%-24px)] max-w-6xl -translate-x-1/2 grid-cols-[1fr_auto] items-center rounded-full border border-ink/10 bg-paper px-2 py-2 shadow-soft md:w-[min(92%,72rem)] md:grid-cols-[1fr_auto_1fr]">
         <Link
           href="/"
-          className="justify-self-start pl-3 md:pl-4 font-display font-medium text-base md:text-lg tracking-tight whitespace-nowrap"
+          className="justify-self-start whitespace-nowrap pl-3 font-display text-base font-medium tracking-tight md:pl-4 md:text-lg"
           id="nav-home"
         >
           {contact.name}
         </Link>
-        <div className="hidden md:flex md:col-start-2 items-center justify-center gap-5 lg:gap-8 text-sm font-medium text-ink/80">
+        <div className="hidden items-center justify-center gap-5 text-sm font-medium text-ink/80 md:col-start-2 md:flex lg:gap-8">
           {links.map((link) => (
-              <HashLink
-                key={link.href}
-                href={link.href}
-                id={link.id}
-                className="hover:text-ink transition-colors"
-              >
-                {link.label}
-              </HashLink>
-            ))}
+            <HashLink
+              key={link.href}
+              href={link.href}
+              id={link.id}
+              className="transition-colors hover:text-ink"
+            >
+              {link.label}
+            </HashLink>
+          ))}
         </div>
-        <div className="justify-self-end md:col-start-3 flex items-center gap-2">
+        <div className="flex items-center justify-self-end gap-2 md:col-start-3">
           <Magnetic
             href="/#contact"
             id="nav-cta"
-            className="hidden sm:inline-flex items-center justify-center bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-5 py-2.5 text-sm font-medium transition-transform duration-300"
+            className="hidden items-center justify-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper outline outline-1 outline-offset-[3px] outline-ink/30 transition-transform duration-300 sm:inline-flex"
           >
             Let&apos;s talk
           </Magnetic>
           <button
             type="button"
             id="menu-open"
-            className="md:hidden w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-paper md:hidden"
             aria-label="Open menu"
             aria-controls="mobile-menu"
             aria-expanded={open}

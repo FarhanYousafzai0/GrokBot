@@ -17,7 +17,10 @@ function FaqItem({
   const panelId = useId();
 
   return (
-    <div className="border-b border-ink/10 py-5 reveal" style={{ transitionDelay: `${index * 40}ms` }}>
+    <div
+      className="faq-item reveal rounded-2xl border border-[#dce6f8]/80 bg-[#f4f7fd] px-5 py-5 sm:px-6"
+      style={{ transitionDelay: `${index * 40}ms` }}
+    >
       <button
         type="button"
         aria-expanded={open}
@@ -48,10 +51,10 @@ function FaqItem({
 
 export function FaqList() {
   return (
-    <>
+    <div className="flex flex-col gap-3">
       {faqs.map((item, index) => (
         <FaqItem key={item.question} question={item.question} answer={item.answer} index={index} />
       ))}
-    </>
+    </div>
   );
 }

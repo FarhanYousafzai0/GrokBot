@@ -117,27 +117,25 @@ export function AboutTeaser() {
 export function ContactSection() {
   return (
     <>
-      <section id="contact" className="contact-section relative scroll-mt-28 overflow-hidden">
-        <div className="relative z-[2] px-5 pb-12 pt-16 text-paper sm:px-6 md:pb-16 md:pt-20 lg:px-8">
-            <header className="relative overflow-hidden pb-8 md:pb-10">
-              <div className="absolute left-[8%] top-[20%] h-4 w-4 bg-paper/25 sparkle" />
-              <div className="absolute right-[10%] top-[35%] h-5 w-5 bg-paper/20 sparkle" />
-              <div className="relative mx-auto max-w-6xl text-center">
-                <h2
-                  className="reveal font-display text-[clamp(2.6rem,8.4vw,6.5rem)] font-medium leading-[0.95] tracking-[-0.04em]"
-                  style={{ transitionDelay: "80ms" }}
-                >
-                  Let&apos;s build
-                  <br />
-                  something together.
-                </h2>
-                <p className="reveal mt-6 text-lg text-paper/75 md:text-xl" style={{ transitionDelay: "160ms" }}>
-                  Tell me about your web or mobile idea. I&apos;ll get back to you soon.
-                </p>
-              </div>
-            </header>
-            <ContactForm />
+      <section id="contact" className="scroll-mt-28 bg-paper px-3 pb-12 pt-14 sm:px-5 md:pb-16 md:pt-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="relative overflow-hidden rounded-[32px] bg-ink text-paper shadow-soft lg:rounded-[40px]">
+            <div className="relative flex flex-col gap-10 px-5 py-10 sm:px-8 sm:py-12 lg:gap-12 lg:px-12 lg:py-14">
+              <div className="contact-deco pointer-events-none absolute bottom-4 left-1/2 hidden h-28 w-56 -translate-x-1/2 md:block" aria-hidden />
+
+              <h2
+                className="reveal text-center font-display text-[clamp(2.35rem,6.5vw,4.25rem)] font-medium leading-[0.95] tracking-[-0.04em]"
+                style={{ transitionDelay: "60ms" }}
+              >
+                Ready?
+                <br />
+                Let&apos;s talk
+              </h2>
+
+              <ContactForm />
+            </div>
           </div>
+        </div>
       </section>
 
       <div className="border-t border-ink/10 bg-paper px-5 pb-20 pt-16 sm:px-6">

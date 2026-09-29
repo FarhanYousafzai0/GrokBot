@@ -447,87 +447,78 @@
   padding-inline: 0;
 }
 
-.contact-section {
-  isolation: isolate;
+.contact-email-link {
+  text-decoration-color: rgba(255, 214, 0, 0.55);
 }
 
-.contact-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: url("/images/contactus.png") center / cover no-repeat;
+.contact-deco {
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(245, 244, 240, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 244, 240, 0.12) 1px, transparent 1px);
+  background-size: 14px 14px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 20%, transparent 72%);
 }
 
-.contact-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    165deg,
-    rgba(28, 43, 160, 0.48) 0%,
-    rgba(36, 54, 197, 0.38) 45%,
-    rgba(18, 32, 110, 0.52) 100%
-  );
+.contact-field-underline {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.28);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.35rem 0 0.55rem;
+  font-size: 0.9375rem;
+  color: #111111;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
-.contact-section-overlay {
+.contact-field-underline::placeholder {
+  color: rgba(17, 17, 17, 0.35);
+}
+
+.contact-field-underline:focus {
+  border-bottom-color: rgba(17, 17, 17, 0.75);
+}
+
+.contact-select {
+  cursor: pointer;
+  padding-right: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 12 12'%3E%3Cpath stroke='%23111' stroke-opacity='.45' stroke-linecap='round' stroke-width='1.5' d='m2.5 4.5 3.5 3.5 3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  appearance: none;
+}
+
+.contact-select-trigger {
+  cursor: pointer;
+}
+
+.contact-select-menu {
+  border: none;
+  background: #ffffff;
+}
+
+.contact-select-menu-header {
+  border: none;
+  background: #ececec;
+}
+
+.contact-select-list {
+  border: none;
+  background: #ffffff;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.contact-select-list::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }
 
-/* Contact glass — subtle frosted panel (not heavy iOS blur) */
-.contact-glass {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 44px -28px rgba(0, 0, 0, 0.4);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  backdrop-filter: blur(16px) saturate(120%);
-}
-
-.contact-label {
-  color: rgba(245, 244, 240, 0.7);
-}
-
-.contact-field {
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  background: rgba(255, 255, 255, 0.07);
-  color: #f5f4f0;
-  -webkit-backdrop-filter: blur(8px) saturate(115%);
-  backdrop-filter: blur(8px) saturate(115%);
-}
-
-.contact-field::placeholder {
-  color: rgba(245, 244, 240, 0.42);
-}
-
-.contact-field:focus {
-  border-color: rgba(255, 255, 255, 0.52);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-}
-
-.contact-status {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(245, 244, 240, 0.92);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-glass,
-  .contact-field,
-  .contact-status {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  .contact-glass {
-    background: rgba(255, 255, 255, 0.11);
-  }
-
-  .contact-field {
-    background: rgba(255, 255, 255, 0.09);
-  }
+.contact-textarea {
+  line-height: 1.45;
 }
 
 .footer-wordmark {
