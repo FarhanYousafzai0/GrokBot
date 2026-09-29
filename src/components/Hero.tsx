@@ -57,7 +57,7 @@ export function Hero() {
         >
           Turn Your Business Bottlenecks
           <br />
-          <span className="block mt-2">Into Automated Systems.</span>
+          <span className="pen-line pen-line-hero mt-2 block">Into Automated Systems.</span>
         </h1>
         <p
           id="hero-sub"

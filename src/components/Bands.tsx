@@ -1,9 +1,12 @@
 import { Map, Server, Smartphone, Wrench } from "lucide-react";
+import Image from "next/image";
+import { about } from "@/data/about";
 import { contact } from "@/data/contact";
 import { faqs } from "@/data/faqs";
-import Image from "next/image";
 import { ContactForm } from "./ContactForm";
 import { FaqList } from "./FaqList";
+import { Magnetic } from "./Magnetic";
+import { AboutMeTitle } from "./AboutMeTitle";
 
 const steps = [
   {
@@ -61,32 +64,50 @@ export function Process() {
 
 export function AboutTeaser() {
   return (
-    <section id="about" className="py-24 md:py-32 px-5 sm:px-6 container mx-auto max-w-6xl border-t border-ink/10 scroll-mt-28">
-      <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center reveal">
+    <section id="about" className="scroll-mt-28 border-t border-ink/10">
+      <header className="relative overflow-hidden px-5 pb-12 pt-24 sm:px-6 md:pb-16 md:pt-28">
+        <div className="pointer-events-none absolute inset-0 bg-svg-grid" />
+        <div className="absolute left-[10%] top-[30%] h-4 w-4 bg-ink/20 sparkle" aria-hidden="true" />
+        <div className="absolute right-[12%] top-[45%] h-5 w-5 bg-ink/20 sparkle" aria-hidden="true" />
+        <div className="relative container mx-auto max-w-6xl text-center">
+          <AboutMeTitle
+            className="reveal font-display text-[clamp(2.6rem,8.4vw,6.5rem)] font-medium leading-[0.95] tracking-[-0.04em]"
+            style={{ transitionDelay: "80ms" }}
+          />
+        </div>
+      </header>
+
+      <div className="container mx-auto flex max-w-6xl flex-col items-center gap-12 px-5 pb-24 sm:px-6 md:flex-row md:pb-32 lg:gap-24">
         <div className="w-full md:w-5/12">
-          <div className="relative aspect-square w-full max-w-[400px] mx-auto bg-ink/[0.04] border border-ink/10 shadow-soft rounded-[24px] overflow-hidden flex items-end justify-center transition-transform duration-500 hover:-translate-y-1.5 lift">
-            <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
+          <div className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[24px] border border-ink/10 bg-ink/[0.04] shadow-soft transition-transform duration-500 hover:-translate-y-1.5 lift reveal">
+            <div className="pointer-events-none absolute inset-0 z-0 bg-svg-grid" />
             <Image
               src="/images/farhan-seated.png"
               alt={contact.name}
               width={691}
               height={954}
               sizes="(min-width: 768px) 400px, 92vw"
-              className="absolute left-0 right-0 bottom-0 w-full h-[94%] object-cover object-top select-none"
-              style={{ width: "100%", height: "94%", objectFit: "cover", objectPosition: "top" }}
+              className="relative z-[1] block h-auto w-full select-none object-contain object-bottom"
             />
-            <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.08em] bg-paper border border-ink/10 rounded-full px-3 py-1 text-ink/70">
-              {contact.name}
-            </span>
           </div>
         </div>
-        <div className="w-full md:w-7/12 flex flex-col items-center text-center md:items-start md:text-left">
-          <h2 className="font-display text-[clamp(1.75rem,3.2vw,2.25rem)] font-medium tracking-tight mb-6 leading-tight">
-            I&apos;m {contact.name}, a MERN stack and React Native developer based in Pakistan.
-          </h2>
-          <p className="text-lg text-ink/70 max-w-xl leading-relaxed mx-auto md:mx-0">
-            [Your story here: how you got into MERN and React Native, placeholder.]
-          </p>
+        <div
+          className="reveal flex w-full max-w-xl flex-col gap-4 text-center text-lg leading-relaxed text-ink/70 md:w-7/12 md:max-w-none md:text-left"
+          style={{ transitionDelay: "160ms" }}
+        >
+          <p className="pen-line pen-line-about mx-auto inline-block max-w-lg md:mx-0">{about.title}</p>
+          {about.paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+          <Magnetic
+            href={contact.whatsappHref}
+            id="about-quote-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center justify-center self-center rounded-full bg-[#2436C5] px-9 py-4 text-sm font-medium uppercase tracking-[0.08em] text-[#fff] shadow-soft transition-transform duration-300 hover:bg-[#1c2ba0] md:mt-4 md:self-start"
+          >
+            Get a quote here
+          </Magnetic>
         </div>
       </div>
     </section>
@@ -95,51 +116,57 @@ export function AboutTeaser() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="border-t border-ink/10 scroll-mt-28">
-      <header className="relative pt-24 md:pt-28 pb-12 md:pb-16 px-5 sm:px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-svg-grid pointer-events-none" />
-        <div className="absolute top-[30%] left-[10%] w-4 h-4 bg-ink/20 sparkle" />
-        <div className="absolute top-[45%] right-[12%] w-5 h-5 bg-ink/20 sparkle" />
-        <div className="relative container mx-auto max-w-6xl text-center">
-          <h2
-            className="reveal font-display font-medium text-[clamp(2.6rem,8.4vw,6.5rem)] leading-[0.95] tracking-[-0.04em]"
-            style={{ transitionDelay: "80ms" }}
-          >
-            Let&apos;s build
-            <br />
-            something together.
-          </h2>
-          <p className="reveal mt-6 text-lg md:text-xl text-ink/70" style={{ transitionDelay: "160ms" }}>
-            Tell me about your web or mobile idea. I&apos;ll get back to you soon.
-          </p>
+    <>
+      <section id="contact" className="contact-section relative scroll-mt-28 overflow-hidden">
+        <div className="relative z-[2] px-5 pb-12 pt-16 text-paper sm:px-6 md:pb-16 md:pt-20 lg:px-8">
+            <header className="relative overflow-hidden pb-8 md:pb-10">
+              <div className="absolute left-[8%] top-[20%] h-4 w-4 bg-paper/25 sparkle" />
+              <div className="absolute right-[10%] top-[35%] h-5 w-5 bg-paper/20 sparkle" />
+              <div className="relative mx-auto max-w-6xl text-center">
+                <h2
+                  className="reveal font-display text-[clamp(2.6rem,8.4vw,6.5rem)] font-medium leading-[0.95] tracking-[-0.04em]"
+                  style={{ transitionDelay: "80ms" }}
+                >
+                  Let&apos;s build
+                  <br />
+                  something together.
+                </h2>
+                <p className="reveal mt-6 text-lg text-paper/75 md:text-xl" style={{ transitionDelay: "160ms" }}>
+                  Tell me about your web or mobile idea. I&apos;ll get back to you soon.
+                </p>
+              </div>
+            </header>
+            <ContactForm />
+          </div>
+      </section>
+
+      <div className="border-t border-ink/10 bg-paper px-5 pb-20 pt-16 sm:px-6">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqs.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: { "@type": "Answer", text: item.answer },
+              })),
+            }),
+          }}
+        />
+        <div className="container mx-auto max-w-4xl">
+          <div className="reveal text-center">
+            <h3 className="mb-3 font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight">
+              Questions clients ask first.
+            </h3>
+            <p className="mx-auto mb-8 max-w-2xl text-ink/60">
+              Straight answers before we get on a call — so you know how I work, what I build, and what happens after launch.
+            </p>
+          </div>
+          <FaqList />
         </div>
-      </header>
-      <ContactForm />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((item) => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: { "@type": "Answer", text: item.answer },
-            })),
-          }),
-        }}
-      />
-      <div className="px-5 sm:px-6 pb-20 container mx-auto max-w-4xl">
-        <div className="reveal text-center">
-          <h3 className="font-display text-[clamp(2rem,4.4vw,3rem)] font-medium tracking-tight mb-3">
-            Questions clients ask first.
-          </h3>
-          <p className="text-ink/60 mb-8 max-w-2xl mx-auto">
-            Straight answers before we get on a call — so you know how I work, what I build, and what happens after launch.
-          </p>
-        </div>
-        <FaqList />
       </div>
-    </section>
+    </>
   );
 }

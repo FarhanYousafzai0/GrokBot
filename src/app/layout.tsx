@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Caveat, Geist, Geist_Mono } from "next/font/google";
 import { contact } from "@/data/contact";
 import { Footer } from "@/components/Footer";
 import { HashScroll } from "@/components/HashScroll";
@@ -28,6 +28,13 @@ const mono = Geist_Mono({
   display: "swap",
 });
 
+const pen = Caveat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-pen",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: `${contact.name} | MERN and React Native developer`,
@@ -43,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${display.variable} ${body.variable} ${mono.variable} ${pen.variable}`} suppressHydrationWarning>
       <body className="font-body antialiased" suppressHydrationWarning>
         <div className="min-h-screen bg-paper text-ink relative w-full overflow-x-clip">
           <SiteHeader />

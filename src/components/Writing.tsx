@@ -5,7 +5,7 @@ export function Writing() {
   const noteCount = posts.length;
 
   return (
-    <section id="writing" className="relative scroll-mt-28 border-t border-ink/10 px-5 py-24 sm:px-6">
+    <section id="writing" className="relative scroll-mt-28 px-5 py-24 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-svg-grid opacity-70" />
       <div className="relative container mx-auto max-w-6xl">
         <div className="reveal mb-12 text-center md:mb-14">

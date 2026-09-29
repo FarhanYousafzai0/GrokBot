@@ -46,6 +46,7 @@ module.exports = {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        pen: ["var(--font-pen)", "cursive"],
       },
       boxShadow: {
         soft: "0 1px 0 rgba(17,17,17,0.04), 0 8px 24px -12px rgba(17,17,17,0.18)",

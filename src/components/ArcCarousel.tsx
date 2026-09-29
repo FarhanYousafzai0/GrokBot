@@ -104,12 +104,12 @@ const ArcEngine = memo(function ArcEngine({
 
     const layout = () => {
       const width = wrap.clientWidth;
-      let cardWidth = Math.round(Math.max(132, Math.min(240, width * 0.165)));
-      if (width < 1024) cardWidth = Math.round(Math.max(150, Math.min(210, width * 0.22)));
-      if (width < 640) cardWidth = Math.round(Math.max(132, Math.min(190, width * 0.44)));
+      let cardWidth = Math.round(Math.max(160, Math.min(280, width * 0.2)));
+      if (width < 1024) cardWidth = Math.round(Math.max(170, Math.min(252, width * 0.26)));
+      if (width < 640) cardWidth = Math.round(Math.max(158, Math.min(224, width * 0.5)));
       const cardHeight = Math.round(cardWidth * 1.42);
       const radius = Math.round(Math.max(width * 0.62, cardWidth * 2.6));
-      const gap = width < 640 ? 14 : 22;
+      const gap = width < 640 ? 16 : 24;
       step = ((2 * Math.asin(Math.min(0.95, (cardWidth + gap) / (2 * radius))) * 180) / Math.PI);
       const depth = width < 640 ? radius * 0.2 : radius * 0.34;
       per = cardWidth + gap;
@@ -118,7 +118,7 @@ const ArcEngine = memo(function ArcEngine({
       wrap.style.setProperty("--r", `${radius}px`);
       wrap.style.setProperty("--shift", `${radius - depth}px`);
       wrap.style.setProperty("--persp", `${Math.round(Math.max(700, width * 0.85))}px`);
-      wrap.style.height = `${Math.round(cardHeight * (width < 640 ? 1.18 : 1.3) + 24)}px`;
+      wrap.style.height = `${Math.round(cardHeight * (width < 640 ? 1.22 : 1.34) + 32)}px`;
       render(true);
     };
 
@@ -304,26 +304,26 @@ const ArcEngine = memo(function ArcEngine({
             tabIndex={-1}
             aria-label={project.name}
           >
-            <div className="arc-inner bg-paper text-ink flex flex-col p-2">
-              <div className="relative h-[46%] shrink-0 rounded-[14px] bg-[#e4e2db] overflow-hidden">
+            <div className="arc-inner flex flex-col bg-paper p-2.5 text-ink">
+              <div className="relative h-[46%] shrink-0 overflow-hidden rounded-[16px] bg-[#e4e2db]">
                 {project.image ? (
                   <ProjectImage
                     src={project.image}
                     alt=""
                     fill
-                    sizes="240px"
+                    sizes="280px"
                     className="object-cover"
                   />
                 ) : null}
               </div>
-              <div className="flex flex-col flex-1 min-h-0 px-1 pt-2 pb-1">
-                <div className="font-display text-[13px] font-medium leading-tight">{project.title}</div>
-                <p className="mt-1 text-[10px] leading-snug text-ink/65 line-clamp-3">{project.summary}</p>
+              <div className="flex min-h-0 flex-1 flex-col px-1.5 pt-2.5 pb-1.5">
+                <div className="font-display text-[14px] font-medium leading-tight">{project.title}</div>
+                <p className="mt-1.5 text-[11px] leading-snug text-ink/65 line-clamp-3">{project.summary}</p>
                 <Link
                   href={`/work/${project.slug}`}
-                  className="mt-auto inline-flex w-fit items-center gap-1 bg-ink text-paper outline outline-1 outline-offset-[3px] outline-ink/30 rounded-full px-2.5 py-1.5 text-[10px] font-medium"
+                  className="mt-auto inline-flex w-fit items-center gap-1 rounded-full bg-ink px-3 py-2 text-[11px] font-medium text-paper outline outline-1 outline-offset-[3px] outline-ink/30"
                 >
-                  View case study <ArrowRight size={11} />
+                  View case study <ArrowRight size={12} />
                 </Link>
               </div>
               <div className="ht" />
@@ -409,18 +409,21 @@ export function ArcCarousel({
   });
 
   return (
-    <section id={sectionId} className="relative bg-ink text-paper overflow-hidden py-[clamp(4.5rem,9vw,8rem)] scroll-mt-28">
-      <div className="absolute inset-0 grid-paper pointer-events-none" />
-      <div className="relative container mx-auto px-5 sm:px-6 max-w-3xl text-center reveal">
-        <h2 className="font-display font-medium text-[clamp(2.25rem,5.2vw,4.5rem)] leading-[0.98] tracking-[-0.035em]">
+    <section
+      id={sectionId}
+      className="relative scroll-mt-28 overflow-hidden bg-ink py-[clamp(4.5rem,9vw,8rem)] text-paper"
+    >
+      <div className="pointer-events-none absolute inset-0 grid-paper opacity-[0.35]" />
+      <div className="relative container mx-auto max-w-3xl px-5 text-center reveal sm:px-6">
+        <h2 className="font-display text-[clamp(2.25rem,5.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.035em]">
           {title}
         </h2>
-        <p className="mt-5 text-[clamp(1rem,1.3vw,1.125rem)] text-paper/65 max-w-xl mx-auto">{subtitle}</p>
+        <p className="mx-auto mt-5 max-w-xl text-[clamp(1rem,1.3vw,1.125rem)] text-paper/65">{subtitle}</p>
         {cta ? (
           <Magnetic
             href={cta.href}
             id={cta.id}
-            className="mt-8 inline-flex items-center gap-2 border border-paper/25 text-paper rounded-full px-6 py-3 text-sm font-medium hover:bg-paper hover:text-ink transition-colors duration-300"
+            className="mt-8 inline-flex items-center gap-2 rounded-full border border-paper/25 px-6 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-paper hover:text-ink"
           >
             {cta.label} <ArrowRight size={16} />
           </Magnetic>

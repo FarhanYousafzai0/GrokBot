@@ -1,4 +1,4 @@
-import { AboutTeaser, ContactSection, Process } from "@/components/Bands";
+import { AboutTeaser, ContactSection } from "@/components/Bands";
 import { ArcCarousel } from "@/components/ArcCarousel";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
@@ -18,7 +18,6 @@ export default function HomePage() {
         caseLinkId="work-case-link"
       />
       <Writing />
-      <Process />
       <AboutTeaser />
       <ContactSection />
     </>
