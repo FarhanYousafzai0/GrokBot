@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { contact } from "@/data/contact";
+import { HeroTitle } from "./hero/HeroTitle";
 import { Magnetic } from "./Magnetic";
 
 function RolePill() {
@@ -51,14 +52,7 @@ export function Hero() {
       <div className="hidden lg:block absolute top-[35%] right-[10%] w-4 h-4 bg-ink/20 sparkle z-0" />
 
       <div id="hero-copy" className="container mx-auto px-5 sm:px-6 relative z-30 flex flex-col items-center mt-2">
-        <h1
-          id="hero-title"
-          className="font-display font-medium text-[clamp(2.4rem,5.3vw,4.75rem)] leading-[0.98] tracking-[-0.04em] text-center w-full max-w-5xl reveal"
-        >
-          Turn Your Business Bottlenecks
-          <br />
-          <span className="pen-line pen-line-hero mt-2 block">Into Automated Systems.</span>
-        </h1>
+        <HeroTitle />
         <p
           id="hero-sub"
           className="mt-5 text-[clamp(1rem,1.4vw,1.25rem)] text-ink/70 text-center max-w-3xl reveal"

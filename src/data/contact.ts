@@ -7,6 +7,8 @@ export const contact = {
   github: "https://github.com/FarhanYousafzai0",
   linkedin: "https://www.linkedin.com/in/muhammad-farhan-8a1363352/",
   whatsappHref: `https://wa.me/923197421574?text=${encodeURIComponent("Hi Muhammad Farhan, I'd like to get a quote.")}`,
+  /** Canonical site URL for metadata and OG tags. Set NEXT_PUBLIC_SITE_URL in production. */
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 };
 
 export function whatsappInquiryUrl(message: string) {

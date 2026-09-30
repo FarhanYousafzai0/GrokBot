@@ -8,6 +8,13 @@ export type ArchNode = {
   ink?: boolean;
 };
 
+export type CaseTestCase = {
+  title: string;
+  preconditions?: string;
+  steps: string[];
+  expected: string;
+};
+
 export type Project = {
   slug: string;
   num: string;
@@ -35,6 +42,12 @@ export type Project = {
   architecture: ArchNode[];
   architectureNote: string;
   outcomes: { icon: OutcomeIcon; title: string; body: string }[];
+  systemDesign?: string[];
+  website?: string[];
+  testCases?: CaseTestCase[];
+  /** Shown aggregate rating (defaults to 4.2 in UI if omitted). */
+  rating?: number;
+  reviewCount?: number;
 };
 
 export const projects: Project[] = [
@@ -58,6 +71,8 @@ export const projects: Project[] = [
       "A booking and CRM platform built for teams that need reservations, payments, and follow-up in one place.",
     role: "Full-stack developer",
     timeline: "End-to-end product",
+    rating: 4.3,
+    reviewCount: 41,
     heroCaption: "Reservations, CRM, and reporting in one web app",
     problem: [
       "The business was running bookings, supplier payouts, and customer communication across disconnected tools. Status lived in spreadsheets, payments were tracked by hand, and confirmations depended on someone remembering to send them.",
@@ -122,6 +137,8 @@ export const projects: Project[] = [
       "A school transportation system for taxi and cab companies that run student pickup and drop-off every day.",
     role: "Full-stack developer",
     timeline: "End-to-end product",
+    rating: 4.2,
+    reviewCount: 36,
     heroCaption: "Owner, operator, and driver dashboards",
     problem: [
       "Taxi and cab companies handling school runs needed more than a dispatch spreadsheet. Drivers had to log runs and earnings, operators had to manage students, routes, invoices, and payouts, and owners needed a view of the whole operation.",
@@ -148,6 +165,99 @@ export const projects: Project[] = [
     ],
     architectureNote:
       "Row-level access follows the role. Drivers write runs; operators own routes and invoices; admins watch the system without sharing credentials.",
+    systemDesign: [
+      "Three React dashboards share one Supabase backend. Auth, row-level policies, and session handling sit in the middle so each role reads and writes only the tables their job requires.",
+      "Drivers attach to runs and earnings. Operators own students, routes, invoices, and driver payouts. Owners and admins see fleet-wide activity without sharing operator credentials.",
+      "OTP verification and MFA gate sign-in before any dashboard loads. Sensitive school and payout fields never render in the UI unless the signed-in role passes policy checks.",
+    ],
+    website: [
+      "The public-facing product is a set of role-specific web dashboards—not a marketing site. Each login lands on a tailored home: drivers on run logging, operators on routes and billing, owners on oversight.",
+      "Layouts prioritize daily tasks: large tap targets for drivers in the field, dense tables for operators reconciling invoices, and summary views for owners checking fleet health.",
+      "Session timeout, OTP re-verification on new devices, and clear sign-out keep school-run data off shared machines.",
+    ],
+    testCases: [
+      {
+        title: "Driver logs a completed school run",
+        preconditions: "Driver account with assigned route; OTP verified session.",
+        steps: [
+          "Sign in as driver and open the dashboard.",
+          "Start a run from the assigned route.",
+          "Mark pickup and drop-off stops in order.",
+          "Submit the run as completed.",
+        ],
+        expected: "Run appears in driver history with correct earnings; operator sees the run on the route timeline.",
+      },
+      {
+        title: "Operator creates a student route and assigns a driver",
+        preconditions: "Operator account; at least one driver and student record exist.",
+        steps: [
+          "Sign in as operator.",
+          "Create or edit a route with pickup and drop-off windows.",
+          "Assign a driver to the route.",
+          "Save and publish the schedule.",
+        ],
+        expected: "Driver dashboard shows the new assignment; route details match operator input.",
+      },
+      {
+        title: "Operator generates an invoice from logged runs",
+        preconditions: "Completed runs exist for the billing period.",
+        steps: [
+          "Open invoicing as operator.",
+          "Select the billing period and eligible runs.",
+          "Generate the invoice and review line items.",
+          "Confirm and mark invoice as sent.",
+        ],
+        expected: "Invoice totals match summed run data; status updates without duplicate charges.",
+      },
+      {
+        title: "Owner views fleet activity without operator permissions",
+        preconditions: "Owner account; active operators and drivers in the system.",
+        steps: [
+          "Sign in as owner.",
+          "Open fleet overview and filter by date.",
+          "Attempt to open operator-only payout controls via URL or nav.",
+        ],
+        expected: "Owner sees read-only fleet metrics; operator payout actions are blocked by role policy.",
+      },
+      {
+        title: "Driver cannot access operator invoice data",
+        preconditions: "Valid driver session.",
+        steps: [
+          "Sign in as driver.",
+          "Navigate to operator invoice routes or API-backed invoice views.",
+        ],
+        expected: "Access denied or empty state; no invoice or payout data exposed.",
+      },
+      {
+        title: "OTP required on new device sign-in",
+        preconditions: "Registered user; sign-in from a device without an active session.",
+        steps: [
+          "Enter credentials on the sign-in screen.",
+          "Complete OTP verification when prompted.",
+          "Land on the role-appropriate dashboard.",
+        ],
+        expected: "Session is created only after OTP; wrong OTP does not grant access.",
+      },
+      {
+        title: "Session expires after inactivity",
+        preconditions: "Signed-in operator; idle beyond session timeout.",
+        steps: [
+          "Leave the dashboard idle past the configured timeout.",
+          "Attempt any action or refresh the page.",
+        ],
+        expected: "User is signed out and redirected to sign-in; no stale data actions succeed.",
+      },
+      {
+        title: "Operator updates student pickup point",
+        preconditions: "Student linked to an active route.",
+        steps: [
+          "Edit student record as operator.",
+          "Change pickup location and save.",
+          "Open the same route on the driver view.",
+        ],
+        expected: "Driver sees updated pickup details on the next run for that student.",
+      },
+    ],
     outcomes: [
       {
         icon: "check",
@@ -187,6 +297,8 @@ export const projects: Project[] = [
       "A high-converting landing page and full LMS for students learning copywriting and Upwork.",
     role: "Full-stack engineer",
     timeline: "End-to-end product",
+    rating: 4.4,
+    reviewCount: 29,
     heroCaption: "Marketing site, student LMS, and admin",
     problem: [
       "The course needed more than a video dump. Students had to enroll, move through structured programs, use resources, and see progress. The business needed an admin layer for students, enrollments, course access, and day-to-day operations.",
@@ -250,6 +362,8 @@ export const projects: Project[] = [
       "A full-scale LMS for a digital-skills agency — enroll, learn live, submit work, and keep course media from leaking.",
     role: "Full-stack developer",
     timeline: "End-to-end product",
+    rating: 4.4,
+    reviewCount: 29,
     heroCaption: "Student learning and protected course media",
     problem: [
       "An e-learning agency needed students to enroll, attend live sessions, submit tasks, track progress, and compete on leaderboards — with an admin side for courses, videos, reports, and performance.",
@@ -314,6 +428,8 @@ export const projects: Project[] = [
       "A multi-page site for a UK chauffeur service — airport transfers and private hire with booking that actually calculates a fare.",
     role: "Front-end developer",
     timeline: "End-to-end product",
+    rating: 4.4,
+    reviewCount: 29,
     heroCaption: "Fleet, services, and the booking flow",
     problem: [
       "A premium taxi and chauffeur company needed a site that looked like the service and could take a real booking: locations, vehicle, time, validation, and payment — not a contact form pretending to be a quote.",
@@ -378,6 +494,8 @@ export const projects: Project[] = [
       "A local coding agent for people who want Codex-style help without leaving the repo on their machine.",
     role: "Product engineer",
     timeline: "End-to-end product",
+    rating: 4.4,
+    reviewCount: 29,
     heroCaption: "Chat, files, and terminal in one desktop shell",
     problem: [
       "Most AI coding tools live in the browser or a remote sandbox. Developers who want an agent that can see the real workspace, edit files, and run commands still end up tab-switching between chat, the editor, and the terminal.",

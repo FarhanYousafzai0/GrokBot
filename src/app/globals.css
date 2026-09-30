@@ -345,6 +345,17 @@
     transform: none;
   }
 
+  #hero-title .hero-line-one-inner,
+  #hero-title .hero-word,
+  #hero-title .hero-pen-highlight {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #hero-title .hero-pen-highlight {
+    transform: scaleX(1) !important;
+  }
+
   .animate-drift-1,
   .animate-drift-2,
   .animate-drift-3,
@@ -519,6 +530,29 @@
 
 .contact-textarea {
   line-height: 1.45;
+}
+
+.case-study-accent {
+  display: flex;
+  min-height: 140px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.case-study-accent-line {
+  min-height: 120px;
+  flex: 1;
+}
+
+.case-study-bars {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(245, 244, 240, 0.32) 0,
+    rgba(245, 244, 240, 0.32) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
 .footer-wordmark {

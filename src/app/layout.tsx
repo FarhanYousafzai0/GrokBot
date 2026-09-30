@@ -36,6 +36,7 @@ const pen = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(contact.siteUrl),
   title: {
     default: `${contact.name} | MERN and React Native developer`,
     template: `%s | ${contact.name}`,
