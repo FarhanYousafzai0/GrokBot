@@ -16,6 +16,8 @@ export type Post = {
   imageAlt?: string;
   lead: string;
   sections: PostSection[];
+  /** When set, “Read article” opens this URL in a new tab (on-page sections stay). */
+  officialArticleUrl?: string;
 };
 
 export const posts: Post[] = [
@@ -32,6 +34,7 @@ export const posts: Post[] = [
     image: "/blogsimages/whatisjev.png",
     imageAlt: "Cover asking what Jev is, with a portrait against a pale grid.",
     lead: "Most models talk. Jev decides. TypeSafe shipped it in September 2026 as the first of what they call System One models: a fast, structured judgment that software can use directly, without a paragraph to parse.",
+    officialArticleUrl: "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
     sections: [
       {
         heading: "Built for software, not for chat",
